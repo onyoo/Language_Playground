@@ -16,8 +16,22 @@
 
 <div ng-app='app' class='app'>
   <div ng-controller='StockCtrl as ctrl'>
-    <div ng-repeat='phrase in ctrl.sayings'>
-      {{phrase.hi}} -- {{phrase.bye}}
+    <div ng-repeat='stock in ctrl.stocks'>
+      name: {{stock.name}} <br>
+      symbol: {{stock.symbol}} <br>
+      lastPrice: {{stock.lastPrice}} <br>
+      change: {{stock.change}} <br>
+      changePercent: {{stock.changePercent}} <br>
+      timestamp: {{stock.timestamp}} <br>
+      mSDate: {{stock.mSDate}} <br>
+      marketCap: {{stock.marketCap}} <br>
+      volume: {{stock.volume}} <br>
+      changeYTD: {{stock.changeYTD}} <br>
+      changePercentYTD: {{stock.changePercentYTD}} <br>
+      high: {{stock.high}} <br>
+      low: {{stock.low}} <br>
+      open: {{stock.open}}
+      <br><br>  
     </div>
   </div>
 </div>
