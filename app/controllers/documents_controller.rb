@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
   def show
-    render json: Document.find(params[:id])
+    doc = Document.find(params[:id])
+    render json: doc
   end
 
   def destroy

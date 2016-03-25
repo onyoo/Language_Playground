@@ -1,0 +1,8 @@
+<div ng-controller='InputCtrl as input'>
+  <input
+    type='text'
+    ng-model='input.body'
+    ng-keypress="$event.charCode === 32 ? input.appendWord($event, input) : null"
+    ng-model-options="{'updateOn': 'default keypress'}">
+  <span>Saved Arr: {{input.inputArr.join(' ')}}</span>
+</div>

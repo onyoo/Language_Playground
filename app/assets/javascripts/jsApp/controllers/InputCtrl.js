@@ -4,7 +4,7 @@ function InputCtrl($scope, storeInputService) {
   this.count = 0;
   this.inputArr = storeInputService;
 
-  this.test = function($event, input) {
+  this.appendWord = function($event, input) {
     storeInputService.addWord(input.body.split(' ').pop())
     input.body = '';
   }
