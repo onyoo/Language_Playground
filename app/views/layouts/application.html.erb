@@ -5,7 +5,7 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script> -->
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -16,25 +16,29 @@
 
 
 <div ng-app='app' class='app'>
-  <div ng-controller='StockCtrl as ctrl'>
-    <button ng-click='ctrl.getStocks()'>Get them!</button>
-    <div ng-repeat='stock in ctrl.stocks'>
-      name: {{stock.name}} <br>
-      symbol: {{stock.symbol}} <br>
-      lastPrice: {{stock.lastPrice}} <br>
-      change: {{stock.change}} <br>
-      changePercent: {{stock.changePercent}} <br>
-      timestamp: {{stock.timestamp}} <br>
-      mSDate: {{stock.mSDate}} <br>
-      marketCap: {{stock.marketCap}} <br>
-      volume: {{stock.volume}} <br>
-      changeYTD: {{stock.changeYTD}} <br>
-      changePercentYTD: {{stock.changePercentYTD}} <br>
-      high: {{stock.high}} <br>
-      low: {{stock.low}} <br>
-      open: {{stock.open}}
-      <br><br>
-    </div>
+
+  <div ui-view></div>
+  <div ng-controller='MainCtrl as ctrl'>
+  <button ng-click='ctrl.getDocs()'>Get Docs</button>
+
+  <ul ng-repeat='document in ctrl.documents'>
+    <li><a href="#/document/{{document.id}}">{{document.title}}</a> - {{document.body}}</li>
+    <div ng-controller='InputCtrl as input'>
+
+      <input
+
+        id='{{ctrl}}'
+        type='text'
+        ng-model='input.body'
+        ng-keypress="$event.charCode === 32 ? input.test($event, input) : null"
+        ng-model-options="{'updateOn': 'default keypress'}">
+        <span>Saved Arr: {{input.inputArr.join(' ')}}</span>
+      </div>
+    <!-- {{document.body.substring(0,100) + '...'}} -->
+  </ul>
+
+<div ui-view />
+
   </div>
 </div>
 
