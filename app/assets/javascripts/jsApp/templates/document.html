@@ -17,8 +17,14 @@
   </div>
 
   <div class="start_stop">
+    timer:
+    <timer interval="1000" countdown="1357020000"> >{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds</timer>
+
     hide this button until first keydown (fade color when not active) <br>
-    <button ng-click='ctrl.something'>stop</button>
+    {{ctrl.timer}}
+    <button time-start ng-click='ctrl.fight()'>start</button>
+    <button ng-click='ctrl.stopFight()'>stop</button>
+    <button ng-click='ctrl.resetFight()'>reset</button>
   </div>
 
 </div>

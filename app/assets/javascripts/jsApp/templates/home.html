@@ -1,6 +1,7 @@
 <div id="doc_index">
 
   <div id="search_doc_index">
+    Search for document:
     <input
       type="text"
       ng-model='ctrl.search'>
@@ -8,6 +9,7 @@
 
   <ul ng-repeat='document in ctrl.documents | filter:ctrl.search'>
     <li><a href="" ui-sref="document({id: document.id})">{{document.title}}</a>
+      - <strong>{{document.author}}</strong>
       - {{document.body.substring(0,100) + '...'}}</li>
   </ul>
 </div>

@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ui.router', 'templates'])
+  .module('app', ['ui.router', 'templates', 'timer'])
   .config(function($stateProvider, $urlRouterProvider){
     $stateProvider
       .state('home', {
