@@ -1,7 +1,8 @@
 function MainCtrl (docService, $rootScope, $filter, $stateParams) {
 
-  this.documents = docService;
-
+  this.documents = docService.documents;
+  this.document = docService.document;
+  
   this.getDocs = function(){
     docService.getAll();
   }

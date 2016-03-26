@@ -1,16 +1,21 @@
 
-<div class='document_body' ng-repeat='document in ctrl.documents | filter:{id:this.id}'>
-  <p>{{document.body}}</p>
-</div>
+<p class='start_stop'>Time will start when you begin typing. It will end when you click 'stop'.</p>
+<p class='document_body'>{{ctrl.document.body}}</p>
 
-  <div ng-controller='InputCtrl as input'>
-    <div id="input_wrapper">
-      <span>Input: {{input.inputArr.join(' ')}}</span>
-      <input
-        type='text'
-        class='input_box'
-        ng-model='input.body'
-        ng-keypress="$event.charCode === 32 ? input.appendWord($event, input) : null"
-        ng-model-options="{'updateOn': 'default keypress'}">
-    </div>
+<div ng-controller='InputCtrl as input'>
+  <div id="input_wrapper">
+    <span>Input: {{input.inputArr.join(' ')}}</span>
+    <input
+      type='text'
+      class='input_box'
+      ng-model='input.body'
+      ng-keypress="$event.charCode === 32 ? input.appendWord($event, input) : null"
+      ng-model-options="{'updateOn': 'default keypress'}">
   </div>
+
+  <div class="start_stop">
+    hide this button until first keydown (fade color when not active) <br>
+    <button ng-click='ctrl.something'>stop</button>
+  </div>
+
+</div>
