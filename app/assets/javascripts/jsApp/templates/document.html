@@ -1,14 +1,14 @@
-
-<p class='start_stop'>Time will start when you begin typing. It will end when you click 'stop'.</p>
-<span ng-repeat='word in ctrl.document.body.split(" ") track by $index '>
-  <span id="{{$index}}">{{word}}</span>
-</span>
+<div ng-controller='InputCtrl as input'>
+  <p class='start_stop'>Time will start when you begin typing. It will end when you click 'stop'.</p>
+  <span ng-repeat='word in ctrl.document.body.split(" ") | scrollFilter:input.count track by $index '>
+    <span id="{{$index}}">{{word}}</span>
+  </span>
 <!-- <p class='document_body'>{{ctrl.document.body.split(' ')}}</p> -->
 <!-- <div class='document_body' ng-repeat='document in ctrl.documents | filter:{id:this.id}'>
   <p>{{document.body}}</p>
 </div> -->
 
-<div ng-controller='InputCtrl as input'>
+
   <div id="input_wrapper">
     <span>Input: {{input.inputArr.join(' ')}}</span>
     {{input.count}}
