@@ -1,15 +1,16 @@
 
-<ul ng-repeat='document in ctrl.documents | filter:{id:this.id}'>
+<div class='document_body' ng-repeat='document in ctrl.documents | filter:{id:this.id}'>
   <p>{{document.body}}</p>
-
-</ul>
+</div>
 
   <div ng-controller='InputCtrl as input'>
-
-    <input
-      type='text'
-      ng-model='input.body'
-      ng-keypress="$event.charCode === 32 ? input.appendWord($event, input) : null"
-      ng-model-options="{'updateOn': 'default keypress'}">
-    <span>Saved Arr: {{input.inputArr.join(' ')}}</span>
+    <div id="input_wrapper">
+      <span>Input: {{input.inputArr.join(' ')}}</span>
+      <input
+        type='text'
+        class='input_box'
+        ng-model='input.body'
+        ng-keypress="$event.charCode === 32 ? input.appendWord($event, input) : null"
+        ng-model-options="{'updateOn': 'default keypress'}">
+    </div>
   </div>
