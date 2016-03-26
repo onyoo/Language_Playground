@@ -1,6 +1,13 @@
-<button ng-click='ctrl.getDocs()'>Get Docs</button>
+<div id="doc_index">
 
-<ul ng-repeat='document in ctrl.documents'>
-  <li><a href="" ui-sref="document({id: document.id})">{{document.title}}</a>
-    - {{document.body.substring(0,100) + '...'}}</li>
-</ul>
+  <div id="search_doc_index">
+    <input
+      type="text"
+      ng-model='ctrl.search'>
+  </div>
+
+  <ul ng-repeat='document in ctrl.documents | filter:ctrl.search'>
+    <li><a href="" ui-sref="document({id: document.id})">{{document.title}}</a>
+      - {{document.body.substring(0,100) + '...'}}</li>
+  </ul>
+</div>

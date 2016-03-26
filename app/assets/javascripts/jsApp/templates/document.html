@@ -1,6 +1,9 @@
 
 <p class='start_stop'>Time will start when you begin typing. It will end when you click 'stop'.</p>
 <p class='document_body'>{{ctrl.document.body}}</p>
+<!-- <div class='document_body' ng-repeat='document in ctrl.documents | filter:{id:this.id}'>
+  <p>{{document.body}}</p>
+</div> -->
 
 <div ng-controller='InputCtrl as input'>
   <div id="input_wrapper">

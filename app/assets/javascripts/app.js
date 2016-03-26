@@ -7,7 +7,9 @@ angular
         templateUrl: 'jsApp/templates/home.html',
         controller: 'MainCtrl',
         resolve: {
-          document: function(){return}
+          documentsPromise: function(docService){
+            return docService.getAll();
+          }
         }
       })
       .state('document', {
@@ -17,7 +19,7 @@ angular
           $scope.id = $stateParams.id;
         },
         resolve: {
-          documentPromise: function(docService, $http, $stateParams){
+          documentPromise: function(docService, $stateParams){
             return docService.getDoc($stateParams.id);
           }
         }
