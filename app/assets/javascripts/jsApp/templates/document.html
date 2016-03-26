@@ -1,6 +1,9 @@
 
 <p class='start_stop'>Time will start when you begin typing. It will end when you click 'stop'.</p>
-<p class='document_body'>{{ctrl.document.body}}</p>
+<span ng-repeat='word in ctrl.document.body.split(" ") track by $index '>
+  <span id="{{$index}}">{{word}}</span>
+</span>
+<!-- <p class='document_body'>{{ctrl.document.body.split(' ')}}</p> -->
 <!-- <div class='document_body' ng-repeat='document in ctrl.documents | filter:{id:this.id}'>
   <p>{{document.body}}</p>
 </div> -->
@@ -8,6 +11,7 @@
 <div ng-controller='InputCtrl as input'>
   <div id="input_wrapper">
     <span>Input: {{input.inputArr.join(' ')}}</span>
+    {{input.count}}
     <input
       type='text'
       class='input_box'
@@ -16,7 +20,7 @@
       ng-model-options="{'updateOn': 'default keypress'}">
   </div>
 
-  <div class="start_stop">
+  <!-- <div class="start_stop">
     timer:
     <timer interval="1000" countdown="1357020000"> >{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds</timer>
 
@@ -25,6 +29,6 @@
     <button time-start ng-click='ctrl.fight()'>start</button>
     <button ng-click='ctrl.stopFight()'>stop</button>
     <button ng-click='ctrl.resetFight()'>reset</button>
-  </div>
+  </div> -->
 
 </div>
