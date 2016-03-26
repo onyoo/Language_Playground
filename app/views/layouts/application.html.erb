@@ -17,13 +17,6 @@
 <div >
 
   <div ng-controller='MainCtrl as ctrl'>
-    <button ng-click='ctrl.getDocs()'>Get Docs</button>
-
-    <ul ng-repeat='document in ctrl.documents'>
-      <li><a href="#/documents/{{document.id}}">{{document.title}}</a> - {{document.body}}</li>
-      <!-- {{document.body.substring(0,100) + '...'}} -->
-    </ul>
-    
     <div ui-view />
   </div>
 </div>

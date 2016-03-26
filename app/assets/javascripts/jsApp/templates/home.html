@@ -1,2 +1,6 @@
-<div>This is the home page</div>
 <button ng-click='ctrl.getDocs()'>Get Docs</button>
+
+<ul ng-repeat='document in ctrl.documents'>
+  <li><a href="" ui-sref="document({id: document.id})">{{document.title}}</a>
+    - {{document.body.substring(0,100) + '...'}}</li>
+</ul>

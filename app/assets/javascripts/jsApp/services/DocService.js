@@ -6,7 +6,7 @@ function DocService($http) {
       angular.copy(data, documents);
     });
   }
-  
+
   return documents;
 }
 
