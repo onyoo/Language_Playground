@@ -30,6 +30,13 @@ function DocService($http, $stateParams, $state) {
     });
   };
 
+  doc.deleteDoc = function(form, id) {
+    var self = this;
+    return $http.delete('/documents/' + id).success(function(id) {
+      // add failure handling
+    })
+  };
+
   return doc;
 };
 

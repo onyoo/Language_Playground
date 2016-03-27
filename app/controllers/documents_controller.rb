@@ -5,7 +5,13 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    if Document.destroy(params[:id])
+      render json: params[:id], :status => 202
+      # render status: 406, status: 202
+    else
+      render :nothing => true, :status => 406, :content_type => 'text/html'
+      # render nothing: true, status: 406
+    end
   end
 
   def index
@@ -18,6 +24,14 @@ class DocumentsController < ApplicationController
 
   def create
     render json: Document.create(document_params)
+  end
+
+  def edit
+    binding.pry
+  end
+
+  def update
+    binding.pry
   end
 
 private

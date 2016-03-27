@@ -4,11 +4,15 @@ function MainCtrl (docService) {
   this.document = docService.document;
   this.search = '';
 
-  this.submitNewForm = function(){
+  this.submitNewForm = function() {
     docService.submitNewDoc(this);
   };
 
-}
+  this.deleteDoc = function(id) {
+    docService.deleteDoc(this, id);
+  };
+
+};
 
 angular
   .module('app')

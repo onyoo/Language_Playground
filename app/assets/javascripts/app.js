@@ -34,10 +34,4 @@ angular
           }
         }
       })
-      // .state('create_doc', {
-      //   url: '/documents',
-      //   method: 'POST',
-      //
-      // });
-      // $urlRouterProvider.otherwise('home');
   });
