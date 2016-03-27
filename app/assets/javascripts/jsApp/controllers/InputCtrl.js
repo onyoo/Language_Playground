@@ -27,7 +27,7 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
     angular.forEach(this.inputArr, function(word){
         correct += (word.e === 'match')  ? 1 : 0;
     });
-    this.percentCorrect = (correct/this.inputArr.length * 100);
+    this.percentCorrect = Math.floor(correct/this.inputArr.length * 100, -1);
   }
 
   $scope.increment = function() {
