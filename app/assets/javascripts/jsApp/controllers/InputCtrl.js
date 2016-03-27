@@ -1,19 +1,17 @@
 function InputCtrl(storeInputService, docService, $interval, $scope) {
-  var input = this;
-  var percent = 0;
-  this.body = '';
-  this.count = 0;
+  var input     = this;
+  var percent   = 0;
+  var timePromise;
+  this.body     = '';
+  this.count    = 0;
   this.inputArr = storeInputService;
-  this.docArr = docService.document.body.split(' ');
-  this.time = 0;
+  this.docArr   = docService.document.body.split(' ');
+  this.time     = 0;
   this.percentCorrect = percent;
 
-  this.appendWord = function($event, input) {
-    if(this.docArr[this.count] !== input.body) {
-      storeInputService.addWord(input.body, 'no_match');
-    }else{
-      storeInputService.addWord(input.body, 'match');
-    };
+  this.appendWord = function(input) {
+    storeInputService.formatAndAddWord(this, input)
+
     if(this.inputArr.length === this.docArr.length){
       this.endSession();
     }
@@ -30,13 +28,11 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
     this.percentCorrect = Math.floor(correct/this.inputArr.length * 100, -1);
   };
 
-////////////////
+////////////////    TIMER
   $scope.increment = function() {
     this.input.time++;
     // angular calls $digest() implicitly because $watch detects change
   };
-
-  var timePromise;
 
   input.startTime = function() {
     timePromise = $interval(function(){$scope.increment(); }, 1000);
@@ -47,7 +43,7 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
   };
 
   Number.prototype.toHHMMSS = function () {
-    var sec_num = parseInt(this, 10); // radix = Specify 10 for the decimal numeral system commonly used by humans.
+    var sec_num = parseInt(this, 10); // radix = Base counting system. Specify 10 for normal.
     var hours   = Math.floor(sec_num / 3600);
     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
     var seconds = sec_num - (hours * 3600) - (minutes * 60);

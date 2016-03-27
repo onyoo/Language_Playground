@@ -6,8 +6,17 @@ function StoreInputService() {
       return inputArray.push({n: word, e:status});
     }else{
       return inputArray.push({n: word, e:status});
-    }
+    };
+  };
+
+  inputArray.formatAndAddWord = function(ctrl, input) {
+    if(ctrl.docArr[ctrl.count] !== input.body) {
+      inputArray.addWord(input.body, 'no_match');
+    }else{
+      inputArray.addWord(input.body, 'match');
+    };
   }
+
   return inputArray;
 }
 

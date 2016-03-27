@@ -9,10 +9,14 @@
   </div>
 
   <ul ng-repeat='document in ctrl.documents | filter:ctrl.search'>
-    <li><a href="" ui-sref='document({id: document.id})'>{{document.title}}</a>
-      - <strong>{{document.author}}</strong>
-      <br>
-      {{document.body.substring(0,100) + '...'}}</li>
-      <button ng-click='ctrl.deleteDoc(document.id); ctrl.documents.splice($index,1)'>Delete</button>
+    <li>
+      <a href="" class='index_title' ui-sref='document({id: document.id})'>{{document.title}}</a>
+      - <p class='index_author'><strong>{{document.author}}</strong></p>
+      <p class='index_body'>{{document.body.substring(0,100) + '...'}}</p>
+    </li>
+      <button
+        class='index_delete'
+        ng-click='ctrl.deleteDoc(document.id); ctrl.documents.splice($index,1)'
+        >Delete</button>
   </ul>
 </div>

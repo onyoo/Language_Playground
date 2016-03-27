@@ -17,8 +17,9 @@
       type='text'
       class='input_box'
       ng-model='input.body'
-      ng-keypress="$event.charCode === 32 ? input.appendWord($event, input) : null"
+      ng-keypress="$event.charCode === 32 ? input.appendWord(input) : null"
       ng-model-options="{'updateOn': 'default keypress'}">
+      <p>Doc length: {{ctrl.document.body.split(" ").length}}</p>
   </div>
 <p>If started, time stops outomatically when finished. </p>
 <p id='timer'>{{ input.time.toHHMMSS() }}</p>
@@ -28,16 +29,5 @@
 <div></div>
   <button ng-click='input.startTime()'> START </button>
   <button ng-click='input.stopTime()'> PAUSE </button>
-
-  <!-- <div class="start_stop">
-    timer:
-    <timer interval="1000" countdown="1357020000"> >{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds</timer>
-
-    hide this button until first keydown (fade color when not active) <br>
-    {{ctrl.timer}}
-    <button time-start ng-click='ctrl.fight()'>start</button>
-    <button ng-click='ctrl.stopFight()'>stop</button>
-    <button ng-click='ctrl.resetFight()'>reset</button>
-  </div> -->
 
 </div>
