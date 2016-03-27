@@ -19,7 +19,7 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
     }
     this.count += 1;
     input.body = '';
-  }
+  };
 
   this.endSession = function() {
     this.stopTime();
@@ -28,13 +28,13 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
         correct += (word.e === 'match')  ? 1 : 0;
     });
     this.percentCorrect = Math.floor(correct/this.inputArr.length * 100, -1);
-  }
+  };
 
 ////////////////
   $scope.increment = function() {
     this.input.time++;
     // angular calls $digest() implicitly because $watch detects change
-  }
+  };
 
   var timePromise;
 
@@ -43,8 +43,8 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
   };
 
   this.stopTime = function() {
-    $interval.cancel(timePromise)
-  }
+    $interval.cancel(timePromise);
+  };
 
   Number.prototype.toHHMMSS = function () {
     var sec_num = parseInt(this, 10); // radix = Specify 10 for the decimal numeral system commonly used by humans.
@@ -57,9 +57,9 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
     if (seconds < 10) {seconds = "0"+seconds;}
     var time    = hours+':'+minutes+':'+seconds;
     return time;
-  }
+  };
+};
 
-}
 angular
   .module('app')
   .controller('InputCtrl', InputCtrl);

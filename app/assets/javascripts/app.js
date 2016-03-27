@@ -12,6 +12,16 @@ angular
           }
         }
       })
+      .state('new_doc', {
+        url: '/documents/new',
+        templateUrl: 'jsApp/templates/newDoc.html',
+        controller: 'MainCtrl',
+        resolve: {
+          newDocPromise: function(docService){
+            return docService.newDoc();
+          }
+        }
+      })
       .state('document', {
         url: '/documents/:id',
         templateUrl: 'jsApp/templates/document.html',
@@ -23,6 +33,11 @@ angular
             return docService.getDoc($stateParams.id);
           }
         }
-      });
-      $urlRouterProvider.otherwise('home');
-  })
+      })
+      // .state('create_doc', {
+      //   url: '/documents',
+      //   method: 'POST',
+      //
+      // });
+      // $urlRouterProvider.otherwise('home');
+  });

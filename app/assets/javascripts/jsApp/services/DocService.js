@@ -1,4 +1,4 @@
-function DocService($http, $stateParams) {
+function DocService($http, $stateParams, $state) {
   var doc = {
     documents: [],
     document: {}
@@ -8,17 +8,31 @@ function DocService($http, $stateParams) {
     return $http.get('/documents.json').success(function(data) {
       angular.copy(data, doc.documents);
     });
-  }
+  };
 
   doc.getDoc = function(id) {
-    return $http.get('http://localhost:3000/documents/' + id).success(function(data) {
+    return $http.get('/documents/' + id).success(function(data) {
       angular.copy(data, doc.document);
     });
   };
 
+  doc.newDoc = function() {
+    return $http.get('/documents/new').success(function(data) {
+      angular.copy(data, doc.document);
+    });
+  };
+
+  doc.submitNewDoc = function(form) {
+    data = { body: form.body, title: form.title };
+    return $http.post('/documents.json', data).success(function(data) {
+      angular.copy(data, doc.document);
+      $state.go('document', {id: doc.document.id});
+    });
+  };
+
   return doc;
-}
+};
 
 angular
   .module('app')
-  .service('docService', DocService)
+  .service('docService', DocService);

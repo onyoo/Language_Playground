@@ -4,8 +4,12 @@ function MainCtrl (docService) {
   this.document = docService.document;
   this.search = '';
 
+  this.submitNewForm = function(){
+    docService.submitNewDoc(this);
+  };
+
 }
 
 angular
   .module('app')
-  .controller('MainCtrl', MainCtrl)
+  .controller('MainCtrl', MainCtrl);

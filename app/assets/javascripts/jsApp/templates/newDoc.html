@@ -1,0 +1,11 @@
+This is the new doc form
+<br>
+Title: {{ctrl.title}}
+<br>
+Body: {{ctrl.body}}
+<br>
+<form name='newDocForm' ng-submit='ctrl.submitNewForm()'>
+  Title: <input type="text" ng-model='ctrl.title' />
+  Body: <input type="text" ng-model='ctrl.body' />
+  <input type="submit" value='Submit' />
+</form>

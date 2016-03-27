@@ -12,8 +12,18 @@ class DocumentsController < ApplicationController
     render json: Document.all
   end
 
+  def new
+    render json: Document.new
+  end
+
   def create
-    binding.pry
+    render json: Document.create(document_params)
+  end
+
+private
+
+  def document_params
+      params.require(:document).permit(:title, :body)
   end
 
 end
