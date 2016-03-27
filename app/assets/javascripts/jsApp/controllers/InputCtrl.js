@@ -1,4 +1,4 @@
-function InputCtrl($scope, storeInputService, docService) {
+function InputCtrl(storeInputService, docService) {
   var input = this;
   this.body = '';
   this.count = 0;
@@ -6,11 +6,10 @@ function InputCtrl($scope, storeInputService, docService) {
   this.doc = docService.document.body.split(' ');
 
   this.appendWord = function($event, input) {
-    storeInputService.addWord(input.body.split(' ').pop());
     if(this.doc[this.count] !== input.body) {
-      console.log("no match")
+      storeInputService.addWord(input.body, 'no match');
     }else{
-      console.log("match")
+      storeInputService.addWord(input.body, 'match');
     };
     this.count += 1;
     input.body = '';

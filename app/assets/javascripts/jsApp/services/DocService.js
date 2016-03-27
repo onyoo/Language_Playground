@@ -1,4 +1,4 @@
-function DocService($http, $q, $stateParams) {
+function DocService($http, $stateParams) {
   var doc = {
     documents: [],
     document: {}

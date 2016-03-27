@@ -1,4 +1,4 @@
-function MainCtrl (docService, $rootScope, $filter, $stateParams, $scope, $interval) {
+function MainCtrl (docService) {
 
   this.documents = docService.documents;
   this.document = docService.document;
@@ -8,7 +8,6 @@ function MainCtrl (docService, $rootScope, $filter, $stateParams, $scope, $inter
   this.getDocs = function(){
     docService.getAll();
   }
-  var scope = this;
 
 
 }
