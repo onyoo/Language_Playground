@@ -3,9 +3,9 @@ function StoreInputService() {
 
   inputArray.addWord = function(word, status) {
     if(status === 'match'){
-      return inputArray.push({n: word, e:'match'});
+      return inputArray.push({n: word, e:status});
     }else{
-      return inputArray.push({n: word, e:'no_match'});
+      return inputArray.push({n: word, e:status});
     }
   }
   return inputArray;
