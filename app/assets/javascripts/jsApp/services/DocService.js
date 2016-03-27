@@ -23,7 +23,7 @@ function DocService($http, $stateParams, $state) {
   };
 
   doc.submitNewDoc = function(form) {
-    data = { body: form.body, title: form.title };
+    data = { author: form.author, body: form.body, title: form.title };
     return $http.post('/documents.json', data).success(function(data) {
       angular.copy(data, doc.document);
       $state.go('document', {id: doc.document.id});

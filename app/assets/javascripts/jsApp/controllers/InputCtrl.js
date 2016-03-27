@@ -11,10 +11,7 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
 
   this.appendWord = function(input) {
     storeInputService.formatAndAddWord(this, input)
-
-    if(this.inputArr.length === this.docArr.length){
-      this.endSession();
-    }
+    this.inputArr.length === this.docArr.length ? this.endSession() : null;
     this.count += 1;
     input.body = '';
   };

@@ -35,7 +35,7 @@ class DocumentsController < ApplicationController
 private
 
   def document_params
-      params.require(:document).permit(:title, :body)
+      params.require(:document).permit(:title, :body, :author)
   end
 
 end

@@ -2,12 +2,16 @@
 <div id="form_title">
   Title: {{ctrl.title}}
 </div>
+<div id="form_author">
+  Author: {{ctrl.author}}
+</div>
 <div id="form_body">
   Body: {{ctrl.body}}
 </div>
 <br>
 <form id='new_doc_form' ng-submit='ctrl.submitNewForm()'>
   Title: <input type="text" ng-model='ctrl.title' />
+  Author: <input type="text" ng-model='ctrl.author'>
   Body: <input type="text" ng-model='ctrl.body' />
   <input type="submit" value='Submit'/>
 </form>
