@@ -4,17 +4,17 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
   this.body = '';
   this.count = 0;
   this.inputArr = storeInputService;
-  this.doc = docService.document.body.split(' ');
+  this.docArr = docService.document.body.split(' ');
   this.time = 0;
   this.percentCorrect = percent;
 
   this.appendWord = function($event, input) {
-    if(this.doc[this.count] !== input.body) {
+    if(this.docArr[this.count] !== input.body) {
       storeInputService.addWord(input.body, 'no_match');
     }else{
       storeInputService.addWord(input.body, 'match');
     };
-    if(this.inputArr.length === this.doc.length){
+    if(this.inputArr.length === this.docArr.length){
       this.endSession();
     }
     this.count += 1;
@@ -30,11 +30,12 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
     this.percentCorrect = Math.floor(correct/this.inputArr.length * 100, -1);
   }
 
+////////////////
   $scope.increment = function() {
     this.input.time++;
     // angular calls $digest() implicitly because $watch detects change
   }
-////////////////
+
   var timePromise;
 
   input.startTime = function() {

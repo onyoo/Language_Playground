@@ -4,11 +4,6 @@ function MainCtrl (docService) {
   this.document = docService.document;
   this.search = '';
 
-
-  this.getDocs = function(){
-    docService.getAll();
-  }
-
 }
 
 angular

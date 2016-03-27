@@ -1,5 +1,5 @@
 function StoreInputService() {
-  var inputArray = []
+  var inputArray = [];
 
   inputArray.addWord = function(word, status) {
     if(status === 'match'){
