@@ -35,14 +35,14 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
     // angular calls $digest() implicitly because $watch detects change
   }
 ////////////////
-  var promise;
+  var timePromise;
 
   input.startTime = function() {
-    promise = $interval(function(){$scope.increment(); }, 1000);
+    timePromise = $interval(function(){$scope.increment(); }, 1000);
   };
 
   this.stopTime = function() {
-    $interval.cancel(promise)
+    $interval.cancel(timePromise)
   }
 
   Number.prototype.toHHMMSS = function () {
