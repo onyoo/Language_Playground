@@ -9,8 +9,6 @@ function MainCtrl (docService) {
     docService.getAll();
   }
 
-
-
 }
 
 angular

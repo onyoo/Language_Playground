@@ -1,3 +1,5 @@
+<a href='' ui-sref='home'> Home </a>
+
 <div class='start_stop' ng-controller='InputCtrl as input'>
   <!-- <p class='start_stop'>Time will start when you begin typing. It will end when you click 'stop'.</p> -->
   <span ng-repeat='word in input.inputArr track by $index'>
@@ -22,7 +24,7 @@
 <p id='timer'>{{ input.time.toHHMMSS() }}</p>
 
 <!-- make into directive -->
-  <p>Congrats! You got: {{ input.percentCorrect }}% right!</p>
+  <p ng-show="input.percentCorrect">Congrats! You got: {{ input.percentCorrect }}% right!</p>
 
   <button ng-click='input.startTime()'> START </button>
   <button ng-click='input.stopTime()'> PAUSE </button>
