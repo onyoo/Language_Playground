@@ -1,10 +1,12 @@
 function InputCtrl(storeInputService, docService, $interval, $scope) {
   var input = this;
+  var percent = 0;
   this.body = '';
   this.count = 0;
   this.inputArr = storeInputService;
   this.doc = docService.document.body.split(' ');
-  this.time = 0
+  this.time = 0;
+  this.percentCorrect = percent;
 
   this.appendWord = function($event, input) {
     if(this.doc[this.count] !== input.body) {
@@ -12,18 +14,37 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
     }else{
       storeInputService.addWord(input.body, 'match');
     };
+    if(this.inputArr.length === this.doc.length){
+      this.endSession();
+    }
     this.count += 1;
     input.body = '';
   }
 
-  $scope.call = function() {
+  this.endSession = function() {
+    this.stopTime();
+    var correct = 0;
+    angular.forEach(this.inputArr, function(word){
+        correct += (word.e === 'match')  ? 1 : 0;
+    });
+    this.percentCorrect = (correct/this.inputArr.length * 100);
+  }
+
+  $scope.increment = function() {
     this.input.time++;
     // angular calls $digest() implicitly because $watch detects change
   }
+////////////////
+  var promise;
 
-  $interval(function(){$scope.call(); }, 1000);
+  input.startTime = function() {
+    promise = $interval(function(){$scope.increment(); }, 1000);
+  };
 
-// from http://stackoverflow.com/questions/6312993/javascript-seconds-to-time-string-with-format-hhmmss#answer-6313008
+  this.stopTime = function() {
+    $interval.cancel(promise)
+  }
+
   Number.prototype.toHHMMSS = function () {
     var sec_num = parseInt(this, 10); // radix = Specify 10 for the decimal numeral system commonly used by humans.
     var hours   = Math.floor(sec_num / 3600);
