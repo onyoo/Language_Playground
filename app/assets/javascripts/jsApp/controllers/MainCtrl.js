@@ -6,6 +6,8 @@ function MainCtrl (docService) {
 
   this.submitNewForm = function() {
     docService.submitNewDoc(this);
+    this.title = '';
+    this.body = '';
   };
 
   this.deleteDoc = function(id) {
