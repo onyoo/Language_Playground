@@ -12,19 +12,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app='app' > <!-- class='app' -->
-
-<div >
-      <%= link_to 'FB', facebook_login_path, class:'social_login_link', id: "fb_sprite" %>
-      <%= link_to 'GOOGLE', google_login_path, class: 'social_login_link', id: "google_sprite" %>
-      <%= link_to 'TWEET TWEET', twitter_login_path, class: 'social_login_link', id: "twitter_sprite" %>
-      <%= link_to 'LINKER', linkedin_path, class: 'social_login_link', id: "linkedin_sprite"%>
-      <br>
-  <% if current_user %>
-    logged in as : <%= current_user.name %>
-  <% end %>
   <div ng-controller='MainCtrl as ctrl'>
+    <div id='sessions_bar'>
+      <div ng-show='loggedIn = true' >
+
+      </div>
+      <% if current_user %>
+        <div ng-show='loggedIn=true'>
+          Logged-in as : <%= current_user.name %> - <%= link_to 'Log-out', log_out_path %>
+        </div>
+      <% else %>
+        <div ng-show='loggedIn'>
+          Sign-in with:
+          <%= link_to 'FB', facebook_login_path, class:'social_login_link', id: "fb_sprite" %>
+          <%= link_to 'GOOGLE', google_login_path, class: 'social_login_link', id: "google_sprite" %>
+          <%= link_to 'TWITTER', twitter_login_path, class: 'social_login_link', id: "twitter_sprite" %>
+          <%= link_to 'LINKEDIN', linkedin_path, class: 'social_login_link', id: "linkedin_sprite"%>
+        </div>
+      <% end %>
+    </div>
+
     <div ui-view />
-  </div>
 </div>
 
 </body>

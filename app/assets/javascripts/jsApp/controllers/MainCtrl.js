@@ -1,4 +1,4 @@
-function MainCtrl (docService) {
+function MainCtrl (docService, $http) {
 
   this.documents = docService.documents;
   this.document = docService.document;
@@ -26,7 +26,7 @@ function MainCtrl (docService) {
 
   this.removeMyDoc = function(id) {
     docService.removeMyDoc(id);
-  }
+  };
 
 };
 

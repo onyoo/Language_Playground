@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :user_docs, only: [:create, :destroy]
   resources :users, only: [:show]
 
+
   get 'auth/:provider/callback', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy', as: 'log_out'
 
   get '/auth/facebook', as: 'facebook_login'
   get '/auth/google', as: 'google_login'
