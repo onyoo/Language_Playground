@@ -24,6 +24,10 @@ function MainCtrl (docService) {
     docService.getMyDocs();
   };
 
+  this.removeMyDoc = function(id) {
+    docService.removeMyDoc(id);
+  }
+
 };
 
 angular

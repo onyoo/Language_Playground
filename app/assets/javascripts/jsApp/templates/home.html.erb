@@ -11,6 +11,7 @@
   <div id="my_docs" ng-show='show_docs'>
     <p ng-repeat='myDoc in ctrl.userDocs'>
       <a href="" ui-sref='document({id: myDoc.id})'>{{myDoc.title}}</a>
+      <span ng-click='ctrl.removeMyDoc(myDoc.id); ctrl.userDocs.splice($index,1)'>Remove</span>
     </p>
   </div>
 

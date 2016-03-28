@@ -39,7 +39,13 @@ function DocService($http, $stateParams, $state) {
 
   doc.addDoc = function(id) {
     data = {document_id: id}
-    return $http.post('/user_docs.json', data).success(function(user_doc) {
+    return $http.post('/user_docs.json', data).success(function(resp) {
+      // add failure handling
+    });
+  };
+
+  doc.removeMyDoc = function(id) {
+    return $http.delete('/user_docs/' + id).success(function(resp) {
       // add failure handling
     });
   };
