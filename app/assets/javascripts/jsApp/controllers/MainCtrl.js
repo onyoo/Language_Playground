@@ -12,7 +12,7 @@ function MainCtrl (docService) {
   };
 
   this.deleteDoc = function(id) {
-    docService.deleteDoc(this, id);
+    docService.deleteDoc(id);
   };
 
   this.addDoc = function(id) {
