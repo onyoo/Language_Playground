@@ -18,6 +18,10 @@
       <%= link_to 'GOOGLE', google_login_path, class: 'social_login_link', id: "google_sprite" %>
       <%= link_to 'TWEET TWEET', twitter_login_path, class: 'social_login_link', id: "twitter_sprite" %>
       <%= link_to 'LINKER', linkedin_path, class: 'social_login_link', id: "linkedin_sprite"%>
+      <br>
+  <% if current_user %>
+    logged in as : <%= current_user.name %>
+  <% end %>
   <div ng-controller='MainCtrl as ctrl'>
     <div ui-view />
   </div>

@@ -3,7 +3,7 @@ angular
   .config(function($stateProvider, $urlRouterProvider){
     $stateProvider
       .state('home', {
-        url: '/',
+        url: '/home',
         templateUrl: 'jsApp/templates/home.html',
         controller: 'MainCtrl',
         resolve: {
