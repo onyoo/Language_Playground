@@ -33,5 +33,6 @@ angular
             return docService.getDoc($stateParams.id);
           }
         }
-      })
+      });
+      $urlRouterProvider.otherwise('home');
   });

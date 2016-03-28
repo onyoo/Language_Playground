@@ -6,10 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-doc_1 = Document.create(title: 'Fireflies In The Garden', body: "Some say the world will end in fire, Some say in ice. From what I've tasted of desire I hold with those who favor fire. But if it had to perish twice, I think I know enough of hate To say that for destruction ice Is also great And would suffice.", author:"Robert Frost")
-doc_2 = Document.create(title: 'A Question', body: 'A voice said, Look me in the stars And tell me truly, men of earth, If all the soul-and-body scars Were not too much to pay for birth.', author:"Robert Frost")
-doc_3 = Document.create(title: 'Nothing Gold Can Stay', body: "Nature's first green is gold, Her hardest hue to hold. Her early leaf's a flower; But only so an hour. Then leaf subsides to leaf, So Eden sank to grief, So dawn goes down to day Nothing gold can stay.", author:"Robert Frost")
-doc_4 = Document.create(title: 'The Death of the Hired Man', body: "MARY sat musing on the lamp-flame at the table
+user_1 = User.create(name: 'Tim')
+
+doc_1 = Document.create(creator_id: user_1.id, title: 'Fireflies In The Garden', body: "Some say the world will end in fire, Some say in ice. From what I've tasted of desire I hold with those who favor fire. But if it had to perish twice, I think I know enough of hate To say that for destruction ice Is also great And would suffice.", author:"Robert Frost")
+doc_2 = Document.create(creator_id: user_1.id, title: 'A Question', body: 'A voice said, Look me in the stars And tell me truly, men of earth, If all the soul-and-body scars Were not too much to pay for birth.', author:"Robert Frost")
+doc_3 = Document.create(creator_id: user_1.id, title: 'Nothing Gold Can Stay', body: "Nature's first green is gold, Her hardest hue to hold. Her early leaf's a flower; But only so an hour. Then leaf subsides to leaf, So Eden sank to grief, So dawn goes down to day Nothing gold can stay.", author:"Robert Frost")
+doc_4 = Document.create(creator_id: user_1.id, title: 'The Death of the Hired Man', body: "MARY sat musing on the lamp-flame at the table
 Waiting for Warren. When she heard his step,
 She ran on tip-toe down the darkened passage
 To meet him in the doorway with the news
@@ -219,7 +221,7 @@ Slipped to her side, caught up her hand and waited.
 “Warren,” she questioned.
 
 “Dead,” was all he answered.", author:"Robert Frost")
-doc_5 = Document.create(title: 'Mending Wall', body: "Something there is that doesn’t love a wall,
+doc_5 = Document.create(creator_id: user_1.id, title: 'Mending Wall', body: "Something there is that doesn’t love a wall,
 That sends the frozen-ground-swell under it,
 And spills the upper boulders in the sun;
 And makes gaps even two can pass abreast.
@@ -264,8 +266,6 @@ Not of woods only and the shade of trees.
 He will not go behind his father’s saying,
 And he likes having thought of it so well
 He says again, ‘Good fences make good neighbors.", author:"Robert Frost")
-
-user_1 = User.create(name: 'Tim')
 
 UserDoc.create(user_id: user_1.id, document_id: doc_1.id)
 UserDoc.create(user_id: user_1.id, document_id: doc_2.id)

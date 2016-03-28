@@ -18,6 +18,14 @@ gem 'responders', '~> 2.0'
 gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 
+# Oauth / DotEnv
+gem 'omniauth-oauth2', '1.3.1'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin-oauth2'
+gem 'dotenv-rails', :groups => [:development, :test]
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
