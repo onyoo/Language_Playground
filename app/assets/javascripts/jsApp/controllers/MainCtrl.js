@@ -8,6 +8,7 @@ function MainCtrl (docService) {
     docService.submitNewDoc(this);
     this.title = '';
     this.body = '';
+    this.author = '';
   };
 
   this.deleteDoc = function(id) {

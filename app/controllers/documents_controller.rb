@@ -23,6 +23,7 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     @document.creator_id = current_user.id
+    @document.creator_name = current_user.name
     @document.save
     render json: @document
   end

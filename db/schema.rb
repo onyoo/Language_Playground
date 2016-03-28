@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328122552) do
+ActiveRecord::Schema.define(version: 20160328143718) do
 
   create_table "documents", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
     t.string   "author"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "creator_id"
+    t.string   "creator_name"
   end
 
   create_table "user_docs", force: :cascade do |t|

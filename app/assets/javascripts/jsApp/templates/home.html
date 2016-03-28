@@ -14,6 +14,9 @@
         <a href="" class='index_title' ui-sref='document({id: document.id})'>{{document.title}}</a>
         -
         <span class='index_author'><strong>{{document.author}}</strong></span>
+        -
+        Created By: <strong> {{document.creator_name}} </strong>
+        <span class='creator'>{{document.creator}}</span>
       </p>
         <span class='index_body'>{{document.body.substring(0,100) + '...'}}</span>
     </li>
