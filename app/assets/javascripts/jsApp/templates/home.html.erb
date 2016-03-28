@@ -10,7 +10,7 @@
 
   <div id="my_docs" ng-show='show_docs'>
     <p ng-repeat='myDoc in ctrl.userDocs'>
-      {{myDoc.title}}
+      <a href="" ui-sref='document({id: myDoc.id})'>{{myDoc.title}}</a>
     </p>
   </div>
 
