@@ -21,7 +21,10 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    render json: Document.create(document_params)
+    @document = Document.new(document_params)
+    @document.creator_id = current_user.id
+    @document.save
+    render json: @document
   end
 
   def edit
