@@ -15,6 +15,10 @@ function MainCtrl (docService) {
     docService.deleteDoc(this, id);
   };
 
+  this.addDoc = function(id) {
+    docService.addDoc(id);
+  };
+
 };
 
 angular
