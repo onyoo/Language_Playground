@@ -1,5 +1,19 @@
 <div id="doc_index">
 
+  <div id="show_my_docs" ng-click='show_docs=true; ctrl.getMyDocs()' ng-show="!show_docs">
+    Show Docs
+  </div>
+
+  <div id="show_my_docs" ng-click='show_docs=false' ng-show="show_docs">
+    Hide Docs
+  </div>
+
+  <div id="my_docs" ng-show='show_docs'>
+    <p ng-repeat='myDoc in ctrl.userDocs'>
+      {{myDoc.title}}
+    </p>
+  </div>
+
   <div id="search_doc_index">
     Search for document:
     <input

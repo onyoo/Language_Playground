@@ -1,7 +1,8 @@
 function DocService($http, $stateParams, $state) {
   var doc = {
     documents: [],
-    document: {}
+    document: {},
+    userDocs: []
   };
 
   doc.getAll = function() {
@@ -40,6 +41,12 @@ function DocService($http, $stateParams, $state) {
     data = {document_id: id}
     return $http.post('/user_docs.json', data).success(function(user_doc) {
       // add failure handling
+    });
+  };
+
+  doc.getMyDocs = function() {
+    return $http.get('/users/current_paceholder').success(function(user_docs) {
+      angular.copy(user_docs, doc.userDocs);
     });
   };
 

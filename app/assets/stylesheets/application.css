@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+#show_my_docs {
+  position: absolute;
+  top: .3em;
+  right: 1em;
+  padding: .3em;
+  border: 1px solid black;
+}
+
+#my_docs {
+  background-color: white;
+  height: 100%;
+  position: absolute;
+  top: 2.5em;
+  right: 0;
+  border: 1px solid black;
+}

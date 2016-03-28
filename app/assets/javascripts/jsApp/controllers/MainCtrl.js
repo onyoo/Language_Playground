@@ -2,6 +2,7 @@ function MainCtrl (docService) {
 
   this.documents = docService.documents;
   this.document = docService.document;
+  this.userDocs = docService.userDocs;
   this.search = '';
 
   this.submitNewForm = function() {
@@ -17,6 +18,10 @@ function MainCtrl (docService) {
 
   this.addDoc = function(id) {
     docService.addDoc(id);
+  };
+
+  this.getMyDocs = function() {
+    docService.getMyDocs();
   };
 
 };

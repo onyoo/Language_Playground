@@ -33,6 +33,12 @@ angular
             return docService.getDoc($stateParams.id);
           }
         }
-      });
+      })
+      // .state('user', {
+      //   url: '/user_docs.json',
+      //   controller: function($scope, $stateParams) {
+      //     return docService.
+      //   }
+      // });
       $urlRouterProvider.otherwise('home');
   });
