@@ -25,7 +25,8 @@ angular
       .state('document', {
         url: '/documents/:id',
         templateUrl: 'jsApp/templates/document.html',
-        controller: function($scope, $stateParams) {
+        controller: function($scope, $stateParams, storeInputService) {
+          storeInputService.clearOut();
           $scope.id = $stateParams.id;
         },
         resolve: {

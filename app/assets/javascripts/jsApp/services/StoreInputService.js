@@ -9,13 +9,17 @@ function StoreInputService() {
     };
   };
 
+  inputArray.clearOut = function() {
+    this.splice(0,this.length);
+  };
+
   inputArray.formatAndAddWord = function(ctrl, input) {
     if(ctrl.docArr[ctrl.count] !== input.body) {
       inputArray.addWord(input.body, 'no_match');
     }else{
       inputArray.addWord(input.body, 'match');
     };
-  }
+  };
 
   return inputArray;
 }
