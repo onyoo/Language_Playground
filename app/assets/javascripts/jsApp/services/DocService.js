@@ -15,7 +15,7 @@ function DocService($http, $stateParams, $state) {
   doc.getDoc = function(id) {
     return $http.get('/documents/' + id).success(function(data) {
       var newArray = [];
-      var oldArray = data.body.split(' ');
+      var oldArray = data.body.replace(/[\n\r]/g, ' ').split(' ');
       for(i=0; i < oldArray.length; i++) {
         if(oldArray[i] != "") {
           newArray.push(oldArray[i]);

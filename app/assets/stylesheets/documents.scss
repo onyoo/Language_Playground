@@ -21,6 +21,11 @@
   text-align:center;
 }
 
+#submitted_words {
+  widows: 100%;
+  text-align:left;
+}
+
 #input_wrapper, #doc_index {
   display: block;
   widows: 100%;

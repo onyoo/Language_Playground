@@ -2,13 +2,17 @@
 
 <div class='start_stop' ng-controller='InputCtrl as input'>
   <!-- <p class='start_stop'>Time will start when you begin typing. It will end when you click 'stop'.</p> -->
-  <span ng-repeat='word in input.inputArr track by $index'>
-    <span class='{{ word.e }}'>{{ word.n }}</span>
-  </span>
-  <br><br>
-  <span ng-repeat='word in input.docArr | scrollFilter:input.count track by $index '>
-    <span id="{{$index}}">{{word}}</span>
-  </span>
+  <div id="submitted_words">
+    <span ng-repeat='word in input.inputArr track by $index'>
+      <span class='{{ word.e }}'>{{ word.n }}</span>
+    </span>
+    <span ng-repeat='target in input.docArr | scrollFilter:input.count track by $index '>
+      <span id="{{$index}}">{{target}}</span>
+    </span>
+  </div>
+
+  <br>
+
 
 
   <div id="input_wrapper">
@@ -21,7 +25,7 @@
       ng-model-options="{'updateOn': 'default keypress'}">
       <p>Doc length: {{input.docArr.length}}</p>
   </div>
-  
+
   <p>If started, time stops outomatically when finished. </p>
   <p id='timer'>{{ input.time.toHHMMSS() }}</p>
 
