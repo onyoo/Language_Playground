@@ -13,8 +13,6 @@
 
   <br>
 
-
-
   <div id="input_wrapper">
 
     <input
@@ -27,12 +25,9 @@
   </div>
 
   <p>If started, time stops outomatically when finished. </p>
-  <p id='timer'>{{ input.time.toHHMMSS() }}</p>
 
-<!-- make into directive -->
   <p ng-show="input.percentCorrect">Congrats! You got: {{ input.percentCorrect }}% right!</p>
-<br>
-  <button ng-click='input.startTime()'> START </button>
-  <button ng-click='input.stopTime()'> PAUSE </button>
+
+  <time-directive></time-directive>
 
 </div>
