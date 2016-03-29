@@ -1,6 +1,6 @@
 <a href='' ui-sref='home'> Home </a>
 
-<div class='start_stop' ng-controller='InputCtrl as input'>
+<div class='document_wrapper' ng-controller='InputCtrl as input'>
   <!-- <p class='start_stop'>Time will start when you begin typing. It will end when you click 'stop'.</p> -->
   <div id="submitted_words">
     <span ng-repeat='word in input.inputArr track by $index'>
@@ -24,7 +24,7 @@
       <p>Doc length: {{input.docArr.length}}</p>
   </div>
 
-  <p>If started, time stops outomatically when finished. </p>
+  <p>Time will start and stop automatically. </p>
 
   <p ng-show="input.percentCorrect">Congrats! You got: {{ input.percentCorrect }}% right!</p>
 

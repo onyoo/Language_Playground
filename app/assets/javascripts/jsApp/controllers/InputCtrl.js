@@ -9,7 +9,8 @@ function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope)
   this.percentCorrect = percent;
 
   this.appendWord = function(input) {
-    storeInputService.formatAndAddWord(this, input)
+    this.inputArr.length === 0 ? $rootScope.$broadcast('startSession') : null;
+    storeInputService.formatAndAddWord(this, input);
     this.inputArr.length === this.docArr.length ? this.endSession() : null;
     this.count += 1;
     input.body = '';
@@ -17,7 +18,7 @@ function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope)
 
   this.endSession = function() {
     // broadcasts end of session to timeDirective over $rootScope
-    $rootScope.$broadcast("sessionEnded");
+    $rootScope.$broadcast('sessionEnded');
     var correct = 0;
     angular.forEach(this.inputArr, function(word){
         correct += (word.e === 'match')  ? 1 : 0;

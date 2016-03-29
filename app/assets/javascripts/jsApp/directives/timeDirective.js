@@ -22,6 +22,11 @@ function timeDirective($interval, $rootScope) {
         timeDir.startStop();
       });
 
+      $rootScope.$on('startSession', function () {
+        this.status = "START";
+        timeDir.startStop();
+      });
+
       timeDir.startStop = function() {
         if(this.status === 'START'){
           timePromise = $interval(function(){timeDir.increment(); }, 1000);

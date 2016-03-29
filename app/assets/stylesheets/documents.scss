@@ -5,7 +5,7 @@
 .document_body {
   padding: 2em;
   border: 1em;
-  border: .5px solid black;
+  border: 1px solid black;
 }
 
 .input_box {
@@ -15,8 +15,9 @@
   border: .5px solid black;
 }
 
-.start_stop {
-  padding: 2em;
+.document_wrapper {
+  border: 1px solid green;
+  padding-top: 1.3em;
   width: 100%;
   text-align:center;
 }
@@ -30,7 +31,7 @@
   display: block;
   widows: 100%;
   padding: 0 8em;
-  border: .5px solid black;
+  border: 1px solid black;
 }
 
 .match {
