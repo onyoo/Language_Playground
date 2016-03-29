@@ -11,7 +11,8 @@ user_1 = User.create(name: 'Tim')
 doc_1 = Document.create(creator_id: user_1.id, creator_name: user_1.name, title: 'Fireflies In The Garden', body: "Some say the world will end in fire, Some say in ice. From what I've tasted of desire I hold with those who favor fire. But if it had to perish twice, I think I know enough of hate To say that for destruction ice Is also great And would suffice.", author:"Robert Frost")
 doc_2 = Document.create(creator_id: user_1.id, creator_name: user_1.name, title: 'A Question', body: 'A voice said, Look me in the stars And tell me truly, men of earth, If all the soul-and-body scars Were not too much to pay for birth.', author:"Robert Frost")
 doc_3 = Document.create(creator_id: user_1.id, creator_name: user_1.name, title: 'Nothing Gold Can Stay', body: "Nature's first green is gold, Her hardest hue to hold. Her early leaf's a flower; But only so an hour. Then leaf subsides to leaf, So Eden sank to grief, So dawn goes down to day Nothing gold can stay.", author:"Robert Frost")
-doc_4 = Document.create(creator_id: user_1.id, creator_name: user_1.name, title: 'The Death of the Hired Man', body: "MARY sat musing on the lamp-flame at the table
+doc_4 = Document.create(creator_id: user_1.id, creator_name: user_1.name, title: 'The Death of the Hired Man', body:
+"MARY sat musing on the lamp-flame at the table
 Waiting for Warren. When she heard his step,
 She ran on tip-toe down the darkened passage
 To meet him in the doorway with the news

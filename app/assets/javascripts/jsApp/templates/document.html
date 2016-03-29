@@ -6,7 +6,7 @@
     <span class='{{ word.e }}'>{{ word.n }}</span>
   </span>
   <br><br>
-  <span ng-repeat='word in ctrl.document.body.split(" ") | scrollFilter:input.count track by $index '>
+  <span ng-repeat='word in input.docArr | scrollFilter:input.count track by $index '>
     <span id="{{$index}}">{{word}}</span>
   </span>
 
@@ -19,10 +19,11 @@
       ng-model='input.body'
       ng-keypress="$event.charCode === 32 ? input.appendWord(input) : null"
       ng-model-options="{'updateOn': 'default keypress'}">
-      <p>Doc length: {{ctrl.document.body.split(" ").length}}</p>
+      <p>Doc length: {{input.docArr.length}}</p>
   </div>
-<p>If started, time stops outomatically when finished. </p>
-<p id='timer'>{{ input.time.toHHMMSS() }}</p>
+  
+  <p>If started, time stops outomatically when finished. </p>
+  <p id='timer'>{{ input.time.toHHMMSS() }}</p>
 
 <!-- make into directive -->
   <p ng-show="input.percentCorrect">Congrats! You got: {{ input.percentCorrect }}% right!</p>

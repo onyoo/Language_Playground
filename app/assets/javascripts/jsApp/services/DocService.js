@@ -2,6 +2,7 @@ function DocService($http, $stateParams, $state) {
   var doc = {
     documents: [],
     document: {},
+    documentArr: [],
     userDocs: []
   };
 
@@ -13,7 +14,16 @@ function DocService($http, $stateParams, $state) {
 
   doc.getDoc = function(id) {
     return $http.get('/documents/' + id).success(function(data) {
+      var newArray = [];
+      var oldArray = data.body.split(' ');
+      for(i=0; i < oldArray.length; i++) {
+        if(oldArray[i] != "") {
+          newArray.push(oldArray[i]);
+        }
+      }
+
       angular.copy(data, doc.document);
+      angular.copy(newArray, doc.documentArr);
     });
   };
 
@@ -24,7 +34,12 @@ function DocService($http, $stateParams, $state) {
   };
 
   doc.submitNewDoc = function(form) {
-    data = { author: form.author, body: form.body, title: form.title };
+    // replaces all double quotes
+    body = form.body.replace(/["“”’‘]/g, "'" );
+    body = body.replace('—', '-');
+    // body = body.replace('\n', '');
+    data = { author: form.author, body: body, title: form.title };
+
     return $http.post('/documents.json', data).success(function(data) {
       angular.copy(data, doc.document);
       $state.go('document', {id: doc.document.id});

@@ -5,7 +5,7 @@ function InputCtrl(storeInputService, docService, $interval, $scope) {
   this.body     = '';
   this.count    = 0;
   this.inputArr = storeInputService;
-  this.docArr   = docService.document.body.split(' ');
+  this.docArr   = docService.documentArr;
   this.time     = 0;
   this.percentCorrect = percent;
 
