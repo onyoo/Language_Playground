@@ -24,22 +24,6 @@ function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope)
     });
     this.percentCorrect = Math.floor(correct/this.inputArr.length * 100, -1);
   };
-
-// ////////////////    TIMER
-//   $scope.increment = function() {
-//     this.input.time++;
-//     // angular calls $digest() implicitly because $watch detects change
-//   };
-//
-//   input.startTime = function() {
-//     timePromise = $interval(function(){$scope.increment(); }, 1000);
-//   };
-//
-//   this.stopTime = function() {
-//     $interval.cancel(timePromise);
-//   };
-//
-//
 };
 
 angular
