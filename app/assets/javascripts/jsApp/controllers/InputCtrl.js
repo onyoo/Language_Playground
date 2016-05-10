@@ -9,6 +9,8 @@ function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope)
   this.percentCorrect = percent;
 
   this.appendWord = function(input) {
+    // broadcasts start of session to timeDirective over $rootScope
+    // should unsubscribe somehow
     this.inputArr.length === 0 ? $rootScope.$broadcast('startSession') : null;
     storeInputService.formatAndAddWord(this, input);
     this.inputArr.length === this.docArr.length ? this.endSession() : null;

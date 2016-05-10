@@ -35,11 +35,5 @@ angular
           }
         }
       })
-      // .state('user', {
-      //   url: '/user_docs.json',
-      //   controller: function($scope, $stateParams) {
-      //     return docService.
-      //   }
-      // });
       $urlRouterProvider.otherwise('home');
   });

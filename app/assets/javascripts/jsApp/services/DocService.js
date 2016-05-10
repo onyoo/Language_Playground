@@ -53,9 +53,8 @@ function DocService($http, $stateParams, $state) {
   };
 
   doc.addDoc = function(id) {
-    data = {document_id: id}
-    return $http.post('/user_docs.json', data).success(function(resp) {
-      // add failure handling
+    return $http.patch('/documents/' + id).success(function(addedDoc) {
+      angular.copy(addedDoc, doc.userDocs);
     });
   };
 
@@ -66,8 +65,8 @@ function DocService($http, $stateParams, $state) {
   };
 
   doc.getMyDocs = function() {
-    return $http.get('/users/current_paceholder').success(function(user_docs) {
-      angular.copy(user_docs, doc.userDocs);
+    return $http.get('/users/current_paceholder').success(function(userDocs) {
+      angular.copy(userDocs, doc.userDocs);
     });
   };
 

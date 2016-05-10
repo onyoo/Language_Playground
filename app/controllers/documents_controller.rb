@@ -21,11 +21,11 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new(document_params)
-    @document.creator_id = current_user.id
-    @document.creator_name = current_user.name
-    @document.save
-    render json: @document
+    document = Document.new(document_params)
+    document.creator_id = current_user.id
+    document.creator_name = current_user.name
+    document.save
+    render json: document
   end
 
   def edit
@@ -33,7 +33,9 @@ class DocumentsController < ApplicationController
   end
 
   def update
-    binding.pry
+    document = Document.find(params[:id])
+    current_user.documents << document
+    render json: document
   end
 
 private

@@ -1,42 +1,44 @@
-<div id="doc_index">
 
-  <div id="show_my_docs" ng-click='show_docs=true; ctrl.getMyDocs()' ng-show="!show_docs">
-    Show Docs
-  </div>
-
-  <div id="show_my_docs" ng-click='show_docs=false' ng-show="show_docs">
-    Hide Docs
-  </div>
-
-  <div id="my_docs" ng-show='show_docs'>
-    <p ng-repeat='myDoc in ctrl.userDocs'>
-      <a href="" ui-sref='document({id: myDoc.id})'>{{myDoc.title}}</a>
-      <span ng-click='ctrl.removeMyDoc(myDoc.id); ctrl.userDocs.splice($index,1)'>Remove</span>
-    </p>
-  </div>
-
-  <div id="search_doc_index">
-    Search for document:
-    <input
-      type="text"
-      ng-model='ctrl.search'>
-      <a href="" ui-sref='new_doc'>Create New Doc</a>
-  </div>
-
-  <ul ng-repeat='document in ctrl.documents | filter:ctrl.search'>
-    <li>
-      <p>
-        <a href="" class='index_title' ui-sref='document({id: document.id})'>{{document.title}}</a>
-        -
-        <span class='index_author'><strong>{{document.author}}</strong></span>
-        -
-        Created By: <strong class='creator'> {{document.creator_name}} </strong>
+<div id="wrapper" ng-class="{'toggled' : !showDocs}">
+  <div id="sidebar-wrapper" >
+    <div class="sidebar-nav">
+      <p ng-repeat='myDoc in ctrl.userDocs' id="side-bar">
+        <a ui-sref='document({id: myDoc.id})'>{{myDoc.title}}</a>
+        <span ng-click='ctrl.removeMyDoc(myDoc.id); ctrl.userDocs.splice($index,1)'>Remove</span>
       </p>
-        <span class='index_body'>{{document.body.substring(0,100) + '...'}}</span>
-    </li>
-      <button
-        class='index_delete'
-        ng-click='ctrl.deleteDoc(document.id); ctrl.documents.splice($index,1)'
-        >Delete</button>   <button ng-click='ctrl.addDoc(document.id)'>Add to my documents</button>
-  </ul>
+    </div>
+  </div>
+
+  <div class="show-docs-button" ng-click="showDocs = !showDocs;" >
+    My Docs
+  </div>
+
+  <div id="page-content-wrapper">
+    <div id="">
+      <!-- search_doc_index -->
+      Search for document:
+      <input
+        type="text"
+        ng-model='ctrl.search'>
+        <a href="" ui-sref='new_doc'>Create New Doc</a>
+    </div>
+
+    <ul ng-repeat='document in ctrl.documents | filter:ctrl.search'>
+      <li>
+        <p>
+          <a href="" class='index_title' ui-sref='document({id: document.id})'>{{document.title}}</a>
+          -
+          <span class='index_author'><strong>{{document.author}}</strong></span>
+          -
+          Created By: <strong class='creator'> {{document.creator_name}} </strong>
+        </p>
+          <span class='index_body'>{{document.body.substring(0,100) + '...'}}</span>
+      </li>
+        <button
+          class='index_delete'
+          ng-click='ctrl.deleteDoc(document.id); ctrl.documents.splice($index,1)'
+          >Delete</button>
+        <button ng-click='ctrl.addDoc(document.id)'>Add to my documents</button>
+    </ul>
+  </div>
 </div>
