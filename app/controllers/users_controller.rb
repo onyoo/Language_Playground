@@ -5,4 +5,8 @@ class UsersController < ApplicationController
     render json: u.documents
   end
 
+  def current
+    render json: current_user, only: [:name, :id]
+  end
+
 end

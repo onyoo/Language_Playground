@@ -47,8 +47,14 @@ function DocService($http, $stateParams, $state) {
   };
 
   doc.deleteDoc = function(id) {
-    return $http.delete('/documents/' + id).success(function(id) {
-      // add failure handling
+    return $http.delete('/documents/' + id).then(function(resp) {
+      angular.forEach(doc.documents, function(document, index) {
+        if(document.id === id) {
+          delete doc.documents[index];
+        };
+      });
+    }, function(error) {
+      debugger;
     })
   };
 

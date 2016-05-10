@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :user_docs, only: [:create, :destroy]
   resources :users, only: [:show]
 
-
+  get '/users/current/user', to: 'users#current'
   get 'auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'log_out'
 

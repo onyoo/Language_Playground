@@ -34,9 +34,11 @@
         </p>
           <span class='index_body'>{{document.body.substring(0,100) + '...'}}</span>
       </li>
+
         <button
           class='index_delete'
-          ng-click='ctrl.deleteDoc(document.id); ctrl.documents.splice($index,1)'
+          ng-click='ctrl.deleteDoc(document.id);'
+          ng-show="ctrl.user.id === document.creator_id"
           >Delete</button>
         <button ng-click='ctrl.addDoc(document.id)'>Add to my documents</button>
     </ul>

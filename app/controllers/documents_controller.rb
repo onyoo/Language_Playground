@@ -5,7 +5,8 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    if Document.destroy(params[:id])
+    if current_user.id == Document.find(params[:id]).creator_id
+      Document.destroy(params[:id])
       render json: params[:id], :status => 202
     else
       render :nothing => true, :status => 406, :content_type => 'text/html'
