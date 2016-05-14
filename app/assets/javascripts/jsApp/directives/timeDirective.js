@@ -34,6 +34,7 @@ function timeDirective($interval, $rootScope) {
         }else{
           $interval.cancel(timePromise)
           this.status = 'START'
+          $rootScope.$broadcast('timeAvailable', timeDir.time);
         };
       };
 

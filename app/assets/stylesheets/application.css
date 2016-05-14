@@ -53,3 +53,20 @@ body {
   right: 0;
   border: 1px solid black;
 }
+
+.help {
+    overflow-y: hidden;
+    max-height: 200px;
+    /*width: 200px;*/
+    /*height: 120px;*/
+    -webkit-transition: all 1s cubic-bezier(0, .1, 0.5, 1);
+    transition: all 1s cubic-bezier(0, .1, 0.5, 1);
+    height: inherit;
+    width: inherit;
+    background-color: #F55678;
+}
+
+/* most important part is here: */
+.hide {
+    max-height: 0;
+}

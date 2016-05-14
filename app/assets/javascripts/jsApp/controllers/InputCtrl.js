@@ -1,12 +1,17 @@
 function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope) {
   var input     = this;
   var percent   = 0;
-  var timePromise;
+  // var timePromise;
   this.body     = '';
   this.count    = 0;
   this.inputArr = storeInputService;
   this.docArr   = docService.documentArr;
   this.percentCorrect = percent;
+  this.docId    = docService.document.id
+
+  $scope.$on('timeAvailable', function(e, time) {
+    input.time = time;
+  });
 
   this.appendWord = function(input) {
     // broadcasts start of session to timeDirective over $rootScope
@@ -26,6 +31,7 @@ function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope)
         correct += (word.e === 'match')  ? 1 : 0;
     });
     this.percentCorrect = Math.floor(correct/this.inputArr.length * 100, -1);
+    docService.updateScore(this.docId, this.percentCorrect, input.time);
   };
 };
 

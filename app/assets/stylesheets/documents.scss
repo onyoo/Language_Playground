@@ -8,36 +8,20 @@
   border: 1px solid black;
 }
 
-.input_box {
-  padding: 2em;
-  width: 100%;
-  text-align:center;
-  border: .5px solid black;
-}
-
 .document_wrapper {
-  border: 1px solid green;
+  // border: 1px solid green;
   padding-top: 1.3em;
   width: 100%;
   text-align:center;
 }
 
-#submitted_words {
-  widows: 100%;
-  text-align:left;
-}
-
 #input_wrapper, #doc_index {
+  padding-top: 3em;
+  padding-right: 3em;
+  padding-left: 3em;
+  padding-bottom: 1em;
   display: block;
   widows: 100%;
-  padding: 0 8em;
-  border: 1px solid black;
-}
-
-.match {
-  background-color: lightgreen;
-}
-
-.no_match {
-  background-color: pink;
+  // padding: 0 8em;
+  background-color: #73DDEE;
 }

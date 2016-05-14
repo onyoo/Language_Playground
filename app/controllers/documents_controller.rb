@@ -29,10 +29,6 @@ class DocumentsController < ApplicationController
     render json: document
   end
 
-  def edit
-    binding.pry
-  end
-
   def update
     document = Document.find(params[:id])
     current_user.documents << document

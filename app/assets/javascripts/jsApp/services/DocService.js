@@ -54,7 +54,7 @@ function DocService($http, $stateParams, $state) {
         };
       });
     }, function(error) {
-      debugger;
+      console.log(error);
     })
   };
 
@@ -75,6 +75,16 @@ function DocService($http, $stateParams, $state) {
       angular.copy(userDocs, doc.userDocs);
     });
   };
+
+  doc.updateScore = function(id, percent, time) {
+    var formattedTime = time.toHHMMSS();
+
+    return $http.patch('/user_docs/' + id, {'user_doc': {'accuracy': percent, 'best_time': formattedTime}}).then(function(resp) {
+      debugger;
+    }, function(error) {
+      console.log(error);
+    });
+  }
 
   return doc;
 };

@@ -23,8 +23,16 @@
       ng-model-options="{'updateOn': 'default keypress'}">
       <p>Doc length: {{input.docArr.length}}</p>
   </div>
+  
+    <div class="help"  ng-class="{'hide' : !showHelp}">
+      <p>Pressing space will submit text. </p>
+      <p>Time will start and stop automatically. </p>
+    </div>
 
-  <p>Time will start and stop automatically. </p>
+  <span class="help-btn" ng-click="showHelp=!showHelp">
+      Help
+  </span>
+
 
   <p ng-show="input.percentCorrect">Congrats! You got: {{ input.percentCorrect }}% right!</p>
 
