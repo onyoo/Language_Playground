@@ -17,6 +17,7 @@ gem 'pry'
 gem 'responders', '~> 2.0'
 gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
+gem 'active_model_serializers'
 
 # Oauth / DotEnv
 gem 'omniauth-oauth2', '1.3.1'

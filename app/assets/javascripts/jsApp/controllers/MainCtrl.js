@@ -22,7 +22,6 @@ function MainCtrl (docService, userService) {
 
   ctrl.addDoc = function(id) {
     docService.addDoc(id).then(function(resp){
-      ctrl.userDocs.push(resp.data);
     });
   };
 

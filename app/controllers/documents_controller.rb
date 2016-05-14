@@ -1,7 +1,8 @@
 class DocumentsController < ApplicationController
   def show
     doc = Document.find(params[:id])
-    render json: doc
+    user_doc = UserDoc.find_by(user_id: current_user.id, document_id: doc.id)
+    render json: [doc, user_doc]
   end
 
   def destroy

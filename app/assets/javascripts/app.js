@@ -25,10 +25,7 @@ angular
       .state('document', {
         url: '/documents/:id',
         templateUrl: 'jsApp/templates/document.html',
-        controller: function($scope, $stateParams, storeInputService) {
-          storeInputService.clearOut();
-          $scope.id = $stateParams.id;
-        },
+        controller: 'InputCtrl as input',
         resolve: {
           documentPromise: function(docService, $stateParams){
             return docService.getDoc($stateParams.id);

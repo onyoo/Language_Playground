@@ -6,7 +6,7 @@ class Document < ActiveRecord::Base
   def update_score(user, score_params)
     if !user_doc = user.user_docs.detect{|user_d| user_d.document_id == self.id}
       user.documents << self
-      user_doc = user.user_docs.detect{|thing| thing == self}
+      user_doc = user.user_docs.detect{|user_d| user_d.document_id == self.id}
     end
     user_doc.update_best_scores(score_params)
     user_doc

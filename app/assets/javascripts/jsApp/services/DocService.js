@@ -3,17 +3,21 @@ function DocService($http, $stateParams, $state) {
     documents: [],
     document: {},
     documentArr: [],
+    currentDocScore: {},
     userDocs: []
   };
 
   doc.getAll = function() {
-    return $http.get('/documents.json').success(function(data) {
+    return $http.get('/documents.json').success(function(resp) {
+      var data = resp.documents;
       angular.copy(data, doc.documents);
     });
   };
 
   doc.getDoc = function(id) {
-    return $http.get('/documents/' + id).success(function(data) {
+    return $http.get('/documents/' + id).success(function(resp) {
+
+      var data = resp.documents[0];
       var newArray = [];
       var oldArray = data.body.replace(/[\n\r]/g, ' ').split(' ');
       for(i=0; i < oldArray.length; i++) {
@@ -23,13 +27,14 @@ function DocService($http, $stateParams, $state) {
       }
 
       angular.copy(data, doc.document);
+      angular.copy(resp.documents[1], doc.currentDocScore);
       angular.copy(newArray, doc.documentArr);
     });
   };
 
   doc.newDoc = function() {
-    return $http.get('/documents/new').success(function(data) {
-      angular.copy(data, doc.document);
+    return $http.get('/documents/new').success(function(resp) {
+      angular.copy(resp.data, doc.document);
     });
   };
 
@@ -40,8 +45,8 @@ function DocService($http, $stateParams, $state) {
     // body = body.replace('\n', '');
     data = { author: form.author, body: body, title: form.title };
 
-    return $http.post('/documents.json', data).success(function(data) {
-      angular.copy(data, doc.document);
+    return $http.post('/documents.json', data).success(function(resp) {
+      angular.copy(resp.document, doc.document);
       $state.go('document', {id: doc.document.id});
     });
   };
@@ -59,8 +64,8 @@ function DocService($http, $stateParams, $state) {
   };
 
   doc.addDoc = function(id) {
-    return $http.patch('/documents/' + id).success(function(addedDoc) {
-      angular.copy(addedDoc, doc.userDocs);
+    return $http.patch('/documents/' + id).success(function(resp) {
+      doc.userDocs.push(resp.document);
     });
   };
 
@@ -71,16 +76,21 @@ function DocService($http, $stateParams, $state) {
   };
 
   doc.getMyDocs = function() {
-    return $http.get('/users/current_paceholder').success(function(userDocs) {
-      angular.copy(userDocs, doc.userDocs);
+    return $http.get('/users/current_paceholder').success(function(resp) {
+      angular.copy(resp.users, doc.userDocs);
     });
   };
 
   doc.updateScore = function(id, percent, time) {
-    var formattedTime = time.toHHMMSS();
+    var data = {
+      'user_doc': {
+        'accuracy': percent,
+        'best_time': time.toHHMMSS()
+      }
+    };
 
-    return $http.patch('/user_docs/' + id, {'user_doc': {'accuracy': percent, 'best_time': formattedTime}}).then(function(resp) {
-      debugger;
+    return $http.patch('/user_docs/' + id, data).then(function(resp) {
+      angular.copy(resp.data.user_doc, doc.currentDocScore);
     }, function(error) {
       console.log(error);
     });

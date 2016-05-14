@@ -1,6 +1,6 @@
 <a href='' ui-sref='home'> Home </a>
 
-<div class='document_wrapper' ng-controller='InputCtrl as input'>
+<div class='document_wrapper' >
 
   <div id="submitted_words">
     <span ng-repeat='word in input.inputArr track by $index'>
@@ -23,7 +23,7 @@
       ng-model-options="{'updateOn': 'default keypress'}">
       <p>Doc length: {{input.docArr.length}}</p>
   </div>
-  
+
     <div class="help"  ng-class="{'hide' : !showHelp}">
       <p>Pressing space will submit text. </p>
       <p>Time will start and stop automatically. </p>
@@ -37,5 +37,7 @@
   <p ng-show="input.percentCorrect">Congrats! You got: {{ input.percentCorrect }}% right!</p>
 
   <time-directive></time-directive>
-
+  <p>Scores must be above 60% to be counted. Don't rush too much!</p>
+  <p>Best Time: {{input.currentDocScore.best_time}}</p>
+  <p>Best Score: {{input.currentDocScore.accuracy}}</p>
 </div>

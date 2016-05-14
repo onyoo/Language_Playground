@@ -10,7 +10,7 @@ class UserDocsController < ApplicationController
   def update
     doc = Document.find(params[:id])
     user_doc = doc.update_score(current_user, score_params)
-    render json: [user_doc, doc]
+    render json: user_doc
   end
 
   def destroy

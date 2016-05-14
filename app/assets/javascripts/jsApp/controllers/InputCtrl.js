@@ -1,13 +1,16 @@
-function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope) {
+function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope, $stateParams) {
   var input     = this;
   var percent   = 0;
-  // var timePromise;
   this.body     = '';
   this.count    = 0;
   this.inputArr = storeInputService;
   this.docArr   = docService.documentArr;
   this.percentCorrect = percent;
-  this.docId    = docService.document.id
+  this.docId    = docService.document.id;
+  this.currentDocScore = docService.currentDocScore;
+
+  storeInputService.clearOut();
+  $scope.id = $stateParams.id;
 
   $scope.$on('timeAvailable', function(e, time) {
     input.time = time;
