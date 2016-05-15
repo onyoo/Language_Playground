@@ -39,10 +39,9 @@ function DocService($http, $stateParams, $state) {
   };
 
   doc.submitNewDoc = function(form) {
-    // replaces all double quotes
-    body = form.body.replace(/["“”’‘]/g, "'" );
+    // replaces all smart quotes
+    body = form.body.replace(/['’‘]/g, "'" ).replace(/["“”]/g, "\"" );
     body = body.replace('—', '-');
-    // body = body.replace('\n', '');
     data = { author: form.author, body: body, title: form.title };
 
     return $http.post('/documents.json', data).success(function(resp) {

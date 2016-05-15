@@ -9,9 +9,24 @@
   Body: {{ctrl.body}}
 </div>
 <br>
-<form id='new_doc_form' ng-submit='ctrl.submitNewForm()'>
-  Title: <input type="text" ng-model='ctrl.title' />
-  Author: <input type="text" ng-model='ctrl.author'>
-  Body: <input type="text" ng-model='ctrl.body' />
-  <input type="submit" value='Submit'/>
-</form>
+<div class="certer-wrapper">
+  <form id='new_doc_form' ng-submit='ctrl.submitNewForm()'>
+    <table>
+      <tr>
+        <td>Title:</td>
+        <td><input name="title" type="text" ng-model='ctrl.title' placeholder="Title" class='full-width'></td>
+      </tr>
+      <tr>
+        <td>Author:</td>
+        <td><input name="author" type="text" ng-model='ctrl.author' placeholder="Author" class='full-width'></td>
+      </tr>
+      <tr>
+        <td>Body:</td>
+        <td><textarea name="body" ng-model='ctrl.body' rows="8" cols="40" placeholder="Body" class='full-width'></textarea></td>
+      </tr>
+      <tr>
+        <td><input type="submit" value='Submit'/></td>
+      </tr>
+  </table>
+  </form>
+</div>
