@@ -47,9 +47,10 @@ function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope,
   }
 
   ctrl.addText = function(text) {
+    ctrl.inputArr.length === 0 ? $rootScope.$broadcast('startSession') : null;
     storeInputService.addText(ctrl, text);
-    ctrl.count = ctrl.inputArr.length;
     $scope.$apply()
+    this.inputArr.length >= this.docArr.length ? this.endSession() : null;
   };
 
   if (annyang) {

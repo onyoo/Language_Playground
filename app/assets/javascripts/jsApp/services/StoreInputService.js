@@ -15,6 +15,7 @@ function StoreInputService() {
       var input = {}
       input.body = val;
       inputArray.formatAndAddWord(ctrl, input);
+      ctrl.count++
     })
   };
 
