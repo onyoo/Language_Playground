@@ -32,5 +32,10 @@ angular
           }
         }
       })
+      // .state('document.quiz', {
+      //   url: '/quiz',
+      //   templateUrl: 'jsApp/templates/quiz.html',
+      //   controller: 'InputCtrl as input'
+      // })
       $urlRouterProvider.otherwise('home');
   });

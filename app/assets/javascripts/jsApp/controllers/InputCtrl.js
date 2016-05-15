@@ -38,6 +38,16 @@ function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope,
     docService.updateScore(this.docId, this.percentCorrect, input.time);
   };
 
+  function chunk(arr, size) {
+    var newArr = [];
+    for (var i=0; i<arr.length; i+=size) {
+      newArr.push(arr.slice(i, i+size));
+    }
+    return newArr;
+  }
+
+  ctrl.chunkedData = chunk(ctrl.docArr, ctrl.docArr.length/3);
+
   var commands = {
     '*val' : function(val) {
       ctrl.voiceInput = val;

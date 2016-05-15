@@ -19,5 +19,8 @@
     "angular": "^1.5.2",
     "angular-ui-router": "^0.2.18",
     "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "angular-drag-and-drop-lists": "^1.4.0"
   }
 }
