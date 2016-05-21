@@ -16,3 +16,7 @@
  stroke: steelblue;
  stroke-width: 1.5px;
 }
+
+.line-chart {
+  padding-top: 5em;
+}

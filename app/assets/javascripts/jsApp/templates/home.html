@@ -1,42 +1,39 @@
 <div class="nav-content">
   Search for document:
   <input type="text" ng-model='ctrl.search'>
-  <span class="nav-buttons" ng-click="showDocs = !showDocs;" >My Docs</span> <a href="" class="nav-buttons" ui-sref='new_doc'> Create New Doc</a>
+  <span class="nav-buttons" ng-click="showDocs = !showDocs;" ng-show="ctrl.user.name">My Docs</span>
+  <a class="nav-buttons" ui-sref='new_doc' ng-show="ctrl.user.name"> Create New Doc</a>
 </div>
 <div id="page-content-wrapper">
 
 
-<div id="wrapper" ng-class="{'toggled' : !showDocs}">
-  <div id="sidebar-wrapper" >
-    <div class="sidebar-nav">
-      <p ng-repeat='myDoc in ctrl.userDocs' id="side-bar">
-        <a ui-sref='document({id: myDoc.id})'>{{myDoc.title}}</a>
-        <span ng-click='ctrl.removeMyDoc(myDoc.id); ctrl.userDocs.splice($index,1)'>Remove</span>
-      </p>
+  <div id="wrapper" ng-class="{'toggled' : !showDocs}">
+    <div id="sidebar-wrapper" >
+      <div class="sidebar-nav">
+        <p ng-repeat='myDoc in ctrl.userDocs' id="side-bar">
+          <a ui-sref='document({id: myDoc.id})'>{{myDoc.title}}</a>
+          <span ng-click='ctrl.removeMyDoc(myDoc.id); ctrl.userDocs.splice($index,1)'>Remove</span>
+        </p>
+      </div>
     </div>
-  </div>
-
-
-
 
     <ul class='document-list'>
       <li ng-repeat='document in ctrl.documents | filter:ctrl.search' class='document-index-card'>
-          <a href="" class='index_title' ui-sref='document({id: document.id})'>{{document.title}}</a>
-          -
-          <span class='index_author'><strong>{{document.author}}</strong></span>
-          -
-          Created By: <strong class='creator'> {{document.creator_name}} </strong>
+        <a href="" class='index_title' ui-sref='document({id: document.id})'>{{document.title}}</a>
+        -
+        <span class='index_author'><strong>{{document.author}}</strong></span>
+        -
+        Created By: <strong class='creator'> {{document.creator_name}} </strong>
         <br>
         <br>
-          <span class='index_body'>{{document.body.substring(0,100) + '...'}}</span>
+        <span class='index_body'>{{document.body.substring(0,100) + '...'}}</span>
         <br>
         <br>
-        <button
-          class='index_delete'
-          ng-click='ctrl.deleteDoc(document.id);'
-          ng-show="ctrl.user.id === document.creator_id"
-          >Delete</button>
-        <button ng-click='ctrl.addDoc(document.id)'>Add to my documents</button>
+        <button class='index_delete'
+                ng-click='ctrl.deleteDoc(document.id);'
+                ng-show="ctrl.user.id === document.creator_id"
+        >Delete</button>
+        <button ng-click='ctrl.addDoc(document.id)' ng-show="ctrl.user.name">Add to my documents</button>
       </li>
     </ul>
   </div>

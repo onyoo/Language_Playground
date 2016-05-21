@@ -1,6 +1,7 @@
 class UserDoc < ActiveRecord::Base
   belongs_to :user
   belongs_to :document
+  has_many :scores
 
   validates :user_id, uniqueness: {scope: :document_id}
 
@@ -10,6 +11,8 @@ class UserDoc < ActiveRecord::Base
         self.update(score_params)
       else
         score_params.each do |key, val|
+          # uses case because lower time is better, but higher score is better
+          # will allow for adding more cases if more metrics are added
           case key
           when 'best_time'
             self.set_lower_score(key, val)

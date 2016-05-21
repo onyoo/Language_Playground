@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: MyString
+  accuracy: 1.5
+  user_doc_id: 
+
+two:
+  time: MyString
+  accuracy: 1.5
+  user_doc_id: 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511084839) do
+ActiveRecord::Schema.define(version: 20160521184834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20160511084839) do
     t.integer  "creator_id"
     t.string   "creator_name"
   end
+
+  create_table "scores", force: :cascade do |t|
+    t.string   "time"
+    t.float    "accuracy"
+    t.integer  "user_doc_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "scores", ["user_doc_id"], name: "index_scores_on_user_doc_id", using: :btree
 
   create_table "user_docs", force: :cascade do |t|
     t.integer  "user_id"
@@ -51,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160511084839) do
     t.datetime "updated_at",       null: false
   end
 
+  add_foreign_key "scores", "user_docs"
   add_foreign_key "user_docs", "documents"
   add_foreign_key "user_docs", "users"
 end

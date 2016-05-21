@@ -7,6 +7,7 @@
 }
 
 #submitted_words {
+  margin-top: 3.5em;
   widows: 100%;
   text-align:left;
 }
