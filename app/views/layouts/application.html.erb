@@ -14,20 +14,21 @@
 <body ng-app='app' class="no-margin"> <!-- class='app' -->
   <div ng-controller='MainCtrl as ctrl'>
 
-    <div id='nav_bar' ng-init="loggedIn = !!current_user">
-
-      <a href='' ui-sref='home'> Home </a> <br>
-      <% if current_user %>
-        Logged-in as : <%= current_user.name %> - <%= link_to 'Log-out', log_out_path %>
-      <% else %>
-        <div >
-          Sign-in with:
-          <%= link_to 'FB', facebook_login_path, class:'social_login_link', id: "fb_sprite" %>
-          <%= link_to 'GOOGLE', google_login_path, class: 'social_login_link', id: "google_sprite" %>
-          <%= link_to 'TWITTER', twitter_login_path, class: 'social_login_link', id: "twitter_sprite" %>
-          <%= link_to 'LINKEDIN', linkedin_path, class: 'social_login_link', id: "linkedin_sprite"%>
-        </div>
-      <% end %>
+    <div id='nav-bar' ng-init="loggedIn = !!current_user">
+      <div id="login-info">
+        <a href='' ui-sref='home'> Home </a> <br>
+        <% if current_user %>
+          Logged-in as : <%= current_user.name %> - <%= link_to 'Log-out', log_out_path %>
+        <% else %>
+          <div >
+            Sign-in with:
+            <%= link_to 'FB', facebook_login_path, class:'social_login_link', id: "fb_sprite" %>
+            <%= link_to 'GOOGLE', google_login_path, class: 'social_login_link', id: "google_sprite" %>
+            <%= link_to 'TWITTER', twitter_login_path, class: 'social_login_link', id: "twitter_sprite" %>
+            <%= link_to 'LINKEDIN', linkedin_path, class: 'social_login_link', id: "linkedin_sprite"%>
+          </div>
+        <% end %>
+      </div>
 
     </div>
 

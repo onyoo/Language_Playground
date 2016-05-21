@@ -1,3 +1,10 @@
+<div class="nav-content">
+  Search for document:
+  <input type="text" ng-model='ctrl.search'>
+  <span class="nav-buttons" ng-click="showDocs = !showDocs;" >My Docs</span> <a href="" class="nav-buttons" ui-sref='new_doc'> Create New Doc</a>
+</div>
+<div id="page-content-wrapper">
+
 
 <div id="wrapper" ng-class="{'toggled' : !showDocs}">
   <div id="sidebar-wrapper" >
@@ -9,38 +16,28 @@
     </div>
   </div>
 
-  <div class="show-docs-button" ng-click="showDocs = !showDocs;" >
-    My Docs
-  </div>
 
-  <div id="page-content-wrapper">
-    <div id="">
-      <!-- search_doc_index -->
-      Search for document:
-      <input
-        type="text"
-        ng-model='ctrl.search'>
-        <a href="" ui-sref='new_doc'>Create New Doc</a>
-    </div>
 
-    <ul ng-repeat='document in ctrl.documents | filter:ctrl.search'>
-      <li>
-        <p>
+
+    <ul class='document-list'>
+      <li ng-repeat='document in ctrl.documents | filter:ctrl.search' class='document-index-card'>
           <a href="" class='index_title' ui-sref='document({id: document.id})'>{{document.title}}</a>
           -
           <span class='index_author'><strong>{{document.author}}</strong></span>
           -
           Created By: <strong class='creator'> {{document.creator_name}} </strong>
-        </p>
+        <br>
+        <br>
           <span class='index_body'>{{document.body.substring(0,100) + '...'}}</span>
-      </li>
-
+        <br>
+        <br>
         <button
           class='index_delete'
           ng-click='ctrl.deleteDoc(document.id);'
           ng-show="ctrl.user.id === document.creator_id"
           >Delete</button>
         <button ng-click='ctrl.addDoc(document.id)'>Add to my documents</button>
+      </li>
     </ul>
   </div>
 </div>

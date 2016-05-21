@@ -25,3 +25,20 @@
   // padding: 0 8em;
   background-color: #73DDEE;
 }
+
+.document-index-card {
+  border: 1px solid black;
+}
+
+li.document-index-card {
+  list-style: none;
+  box-shadow: 0 5px 19px 0 rgba(0, 0, 0, 0.18);
+  padding: .5em;
+  margin: .5em;
+  width: 95.5%;
+}
+
+#page-content-wrapper ul {
+  margin-top: 90px;
+  padding-left: 0em;
+}
