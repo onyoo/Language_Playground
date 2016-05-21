@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ui.router', 'templates'])
+  .module('app', ['ui.router', 'templates', "d3"])
   .config(function($stateProvider, $urlRouterProvider){
     $stateProvider
       .state('home', {
@@ -32,10 +32,10 @@ angular
           }
         }
       })
-      // .state('document.quiz', {
-      //   url: '/quiz',
-      //   templateUrl: 'jsApp/templates/quiz.html',
-      //   controller: 'InputCtrl as input'
-      // })
+      .state('d3', {
+        url: '/d3',
+        templateUrl: 'jsApp/templates/d3.html',
+        controller: 'D3Controller as d3'
+      })
       $urlRouterProvider.otherwise('home');
   });
