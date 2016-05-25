@@ -11,7 +11,7 @@
     <div id="sidebar-wrapper" >
       <div class="sidebar-nav">
         <p ng-repeat='myDoc in ctrl.userDocs' id="side-bar">
-          <a ui-sref='document({id: myDoc.id})'>{{myDoc.title}}</a>
+          <a ui-sref='typing({id: myDoc.id})'>{{myDoc.title}}</a>
           <span ng-click='ctrl.removeMyDoc(myDoc.id); ctrl.userDocs.splice($index,1)'>Remove</span>
         </p>
       </div>
@@ -19,7 +19,10 @@
 
     <ul class='document-list'>
       <li ng-repeat='document in ctrl.documents | filter:ctrl.search' class='document-index-card'>
-        <a href="" class='index_title' ui-sref='document({id: document.id})'>{{document.title}}</a>
+        <span class='index_title'>{{document.title}}</span>
+        <a ui-sref='typing({id: document.id})'><button>Typing Practice</button></a>
+        <a ui-sref='speaking({id: document.id})'><button>Speaking Practice</button></a>
+        <a ui-sref='quiz({id: document.id})'><button>Document Quiz</button></a>
         -
         <span class='index_author'><strong>{{document.author}}</strong></span>
         -

@@ -1,0 +1,53 @@
+<div class='document_wrapper' >
+  <!-- <a href='' ui-sref='document.quiz'> Quiz </a> -->
+  <document-quiz data="typing.chunkedData" ng-show="showQuiz"></document-quiz>
+<br>
+  <div id="submitted_words">
+    <span ng-repeat='word in typing.inputArr track by $index'>
+      <span class='{{ word.e }}'>{{ word.n }}</span>
+    </span>
+    <span ng-repeat='target in typing.docArr | scrollFilter:typing.count track by $index '>
+      <span id="{{$index}}">{{target}}</span>
+    </span>
+  </div>
+
+  <br>
+
+  <div id="typing_wrapper">
+
+    <input
+      type='text'
+      class='input_box'
+      ng-model='typing.body'
+      ng-keypress="$event.charCode === 32 ? typing.appendWord(typing) : null"
+      ng-model-options="{'updateOn': 'default keypress'}">
+      <p>Doc length: {{typing.docArr.length}}</p>
+  </div>
+
+    <div class="help"  ng-class="{'hide' : !showHelp}">
+      <p>Pressing space will submit text. </p>
+      <p>Time will start and stop automatically. </p>
+    </div>
+
+  <span class="help-btn" ng-click="showHelp=!showHelp">
+      Help
+  </span>
+  <br><br>
+
+  <p ng-show="typing.percentCorrect">Congrats! You got: {{ typing.percentCorrect }}% right!</p>
+
+  <time-directive></time-directive>
+  <p>Scores must be above 60% to be counted. Don't rush too much!</p>
+  <p>Best Time: {{typing.currentDocScore.best_time}}</p>
+  <p>Best Score: {{typing.currentDocScore.accuracy}}</p>
+<br>
+<button ng-click='showQuiz = !showQuiz'>Quiz</button>
+<br>
+  <div simple-line-chart
+      id="lineGraph"
+      ng-show="showGraph && typing.currentDocScore.scores.length > 2"
+      data="typing.currentDocScore.scores"
+      class="line-chart"></div>
+  <div ng-show="showGraph && ((typing.currentDocScore.scores.length < 3) || !typing.currentDocScore.scores.length)">Nothing to show yet... Must have tried at least 3 times!</div>
+  <button ng-click="showGraph=!showGraph;">My Stats</button>
+</div>

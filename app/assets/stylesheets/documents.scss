@@ -15,7 +15,7 @@
   text-align:center;
 }
 
-#input_wrapper, #doc_index {
+#typing_wrapper, #doc_index {
   padding-top: 3em;
   padding-right: 3em;
   padding-left: 3em;
@@ -41,4 +41,8 @@ li.document-index-card {
 #page-content-wrapper ul {
   margin-top: 90px;
   padding-left: 0em;
+}
+
+.index_title {
+  font-weight: bold;
 }

@@ -1,4 +1,4 @@
-function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope, $stateParams) {
+function TypingCtrl(storeInputService, docService, $interval, $scope, $rootScope, $stateParams) {
   var input     = this;
   var percent   = 0;
   this.body     = '';
@@ -23,7 +23,7 @@ function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope,
     this.inputArr.length === 0 ? $rootScope.$broadcast('startSession') : null;
     storeInputService.formatAndAddWord(this, input);
     this.inputArr.length === this.docArr.length ? this.endSession() : null;
-    this.count += 1;
+    this.count++;
     input.body = '';
   };
 
@@ -38,24 +38,6 @@ function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope,
     docService.updateScore(this.docId, this.percentCorrect, input.time);
   };
 
-  function chunk(arr, size) {
-    var newArr = [];
-    for (var i=0; i<arr.length; i+=size) {
-      newArr.push(arr.slice(i, i+size));
-    }
-    return newArr;
-  }
-
-  ctrl.chunkedData = chunk(ctrl.docArr, ctrl.docArr.length/3);
-
-  var commands = {
-    '*val' : function(val) {
-      ctrl.voiceInput = val;
-      $scope.$apply();
-      ctrl.addText(val);
-    }
-  }
-
   ctrl.addText = function(text) {
     ctrl.inputArr.length === 0 ? $rootScope.$broadcast('startSession') : null;
     storeInputService.addText(ctrl, text);
@@ -63,18 +45,8 @@ function InputCtrl(storeInputService, docService, $interval, $scope, $rootScope,
     this.inputArr.length >= this.docArr.length ? this.endSession() : null;
   };
 
-  if (annyang) {
-    // Add our commands to annyang
-    annyang.addCommands(commands);
-    // Tell KITT to use annyang
-    SpeechKITT.annyang();
-    // Define a stylesheet for KITT to use
-    SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/themes/flat.css');
-    // Render KITT's interface
-    SpeechKITT.vroom();
-  }
 };
 
 angular
   .module('app')
-  .controller('InputCtrl', InputCtrl);
+  .controller('TypingCtrl', TypingCtrl);

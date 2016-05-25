@@ -1,18 +1,31 @@
-<div class="blackout" ng-click='$parent.showQuiz = !$parent.showQuiz'>
-  <div class='simpleDemo certer-wrapper' ng-click="$event.stopPropagation()">
+<div class='document_wrapper' >
 
-    <ul dnd-list="list" ng-repeat="row in quiz.data" class='one-third'>
-      <li ng-repeat="item in row track by $index"
-      dnd-draggable="item"
-      dnd-moved="row.splice($index, 1)"
-      dnd-effect-allowed="move"
-      dnd-selected="models.selected = item"
-      ng-class="{'selected': models.selected === item}"
-      draggable="true"
-      >
-      {{item}} {{$index}}
+  <!-- <div id="submitted_words">
+    <span ng-repeat='word in typing.inputArr track by $index'>
+      <span class='{{ word.e }}'>{{ word.n }}</span>
+    </span>
+    <span ng-repeat='target in typing.docArr | scrollFilter:typing.count track by $index '>
+      <span id="{{$index}}">{{target}}</span>
+    </span>
+  </div> -->
+  <div id="submitted_words">
+    <span ng-repeat="word in quiz.docArr">{{word}}</span>
+  </div>
+
+</div>
+
+<div class='simpleDemo certer-wrapper'>
+
+  <ul dnd-list="list" ng-repeat="row in quiz.chunkedData" class='one-third'>
+    <li ng-repeat="item in row track by $index"
+        dnd-draggable="item"
+        dnd-moved="row.splice($index, 1)"
+        dnd-effect-allowed="move"
+        dnd-selected="models.selected = item"
+        ng-class="{'selected': models.selected === item}"
+        draggable="true">
+        {{item}}
     </li>
   </ul>
 
-</div>
 </div>
