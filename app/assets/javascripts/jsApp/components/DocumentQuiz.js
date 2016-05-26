@@ -7,10 +7,16 @@ var DocumentQuiz = {
     var ctrl             = this;
     var percent          = 0;
 
-    ctrl.docArr          = docService.documentArr;
     ctrl.percentCorrect  = percent;
-    ctrl.docId           = docService.document.id;
+    ctrl.document        = docService.document;
+    ctrl.docArr          = [];
     ctrl.currentDocScore = docService.currentDocScore;
+
+    ctrl.document.body.split('.').forEach(function(string, i){
+      if (string.length > 0) {
+        ctrl.docArr.push({id: i, string: string+='.'})
+      };
+    });
 
     $scope.models = {
       selected: null
@@ -22,13 +28,20 @@ var DocumentQuiz = {
       for (var i=0; i<arr.length; i+=size) {
         newArr.push(arr.slice(i, i+size));
       };
+      //sets receiver column
       newArr.splice(0,0,[]);
       return newArr;
     };
 
     ctrl.columnQuizData = createCollumns(ctrl.docArr, ctrl.docArr.length/4);
 
-    ctrl.formArray = [];
+    $scope.moveToContainer = function(item, index) {
+      this.$parent.row.splice(index,1);
+      ctrl.columnQuizData[0].push(item);
+    };
+    $scope.refresh = function() {
+      ctrl.columnQuizData = createCollumns(ctrl.docArr, ctrl.docArr.length/4);
+    };
 
   },
   controllerAs: 'quiz'

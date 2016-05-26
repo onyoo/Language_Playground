@@ -1,22 +1,23 @@
 <div class='document_wrapper' >
   <div class="blackout scrollable" ng-click='$parent.quiz = !$parent.quiz'>
 
-    <div class='simpleDemo certer-wrapper' ng-click="$event.stopPropagation()">
-
-      <ul dnd-list="row"
-      ng-repeat="row in quiz.columnQuizData"
+    <div class='simpleDemo quiz-box' ng-click="$event.stopPropagation()">
+      <span ng-click='$parent.quiz = !$parent.quiz'>X Close X</span>
+      <p>Drag the sentences below into order. Clicking will add to the end of the list.</p>
+      <button ng-click="refresh()">Refresh (All progress will be lost!)</button>
+      <ul dnd-list="column"
+      ng-repeat="column in quiz.columnQuizData"
       ng-init="$index ? full = true : full = false"
       ng-class="{'receiver': !full, 'one-fourth': full}">
 
-      <span ng-show="!full">Drag Here</span>
+      <p ng-show="!full && column.length === 0 ">Drag Here</p>
 
-        <li ng-repeat="item in row track by $index"
+        <li ng-repeat="item in column"
           dnd-draggable="item"
-          dnd-moved="row.splice($index, 1)"
+          dnd-moved="column.splice($index, 1);"
           dnd-effect-allowed="move"
-          dnd-selected="models.selected = item"
-          ng-class="{'selected': models.selected === item, 'receiver-item': !full }">
-          {{item}}
+          ng-class="{'receiver-item': !full }">
+          {{item.string}}
         </li>
       </ul>
     </div>

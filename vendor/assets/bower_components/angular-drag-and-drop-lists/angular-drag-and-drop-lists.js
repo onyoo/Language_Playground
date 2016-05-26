@@ -366,7 +366,6 @@ angular.module('dndLists', [])
         // Insert the object into the array, unless dnd-drop took care of that (returned true).
         if (transferredObject !== true) {
           scope.$apply(function() {
-            console.log(scope.$eval(attr.dndList));
             scope.$eval(attr.dndList).splice(index, 0, transferredObject);
           });
         }
@@ -447,7 +446,7 @@ angular.module('dndLists', [])
        * object needs to be inserted
        */
       function getPlaceholderIndex() {
-        return Array.prototype.indexOf.call(listNode.children, placeholderNode);
+        return Array.prototype.indexOf.call(listNode.children, placeholderNode) - 1;
       }
 
       /**
