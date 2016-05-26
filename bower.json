@@ -20,7 +20,8 @@
     "angular-ui-router": "^0.2.18",
     "bootstrap": "^3.3.6",
     "d3": "^3.5.17",
-    "jquery": "^2.2.4"
+    "jquery": "^2.2.4",
+    "angular-drag-and-drop-lists": "^1.4.0"
   },
   "devDependencies": {
     "angular-drag-and-drop-lists": "^1.4.0"

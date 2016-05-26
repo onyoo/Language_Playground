@@ -2,8 +2,8 @@
  * For the correct positioning of the placeholder element, the dnd-list and
  * it's children must have position: relative
  */
-.simpleDemo ul[dnd-list],
-.simpleDemo ul[dnd-list] > li {
+ul[dnd-list],
+ul[dnd-list] > li {
 	position: relative;
 }
 
@@ -11,7 +11,7 @@
  * The dnd-list should always have a min-height,
  * otherwise you can't drop to it once it's empty
  */
-.simpleDemo ul[dnd-list] {
+ul[dnd-list] {
     min-height: 42px;
     padding-left: 0px;
 }
@@ -22,7 +22,7 @@
  * sense to hide it to give the user the feeling
  * that he's actually moving it.
  */
-.simpleDemo ul[dnd-list] .dndDraggingSource {
+ul[dnd-list] .dndDraggingSource {
     display: none;
 }
 
@@ -31,7 +31,7 @@
  * added to the dnd-list while the user is dragging
  * over it.
  */
-.simpleDemo ul[dnd-list] .dndPlaceholder {
+ul[dnd-list] .dndPlaceholder {
     display: block;
     background-color: #ddd;
     min-height: 42px;
@@ -44,7 +44,7 @@
  * half of the element we are dragging over. In other
  * browsers we can use event.offsetY for this.
  */
-.simpleDemo ul[dnd-list] li {
+ ul[dnd-list] li {
     background-color: #fff;
     border: 1px solid #ddd;
     border-top-right-radius: 4px;
@@ -57,7 +57,31 @@
 /**
  * Show selected elements in green
  */
-.simpleDemo ul[dnd-list] li.selected {
+ul[dnd-list] li.selected {
     background-color: #dff0d8;
     color: #3c763d;
+}
+
+.panel-info>.panel-heading {
+    background-image: -webkit-linear-gradient(top,#d9edf7 0,#c4e3f3 100%);
+    background-image: linear-gradient(to bottom,#d9edf7 0,#c4e3f3 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9edf7', endColorstr='#ffc4e3f3', GradientType=0);
+}
+.panel-info>.panel-heading {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
 }

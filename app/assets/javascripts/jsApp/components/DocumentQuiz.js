@@ -3,23 +3,33 @@ var DocumentQuiz = {
   bindings: {
     data: '='
   },
-  controller: function($scope) {
+  controller: function($scope, docService, storeInputService) {
+    var ctrl             = this;
+    var percent          = 0;
 
-    // $scope.models = {
-    //       selected: null,
-    //       lists: {"A": [], "B": []}
-    //   };
-    //
-    //   // Generate initial model
-    //   for (var i = 1; i <= 3; ++i) {
-    //       $scope.models.lists.A.push({label: "Item A" + i});
-    //       $scope.models.lists.B.push({label: "Item B" + i});
-    //   }
-    //
-    //   // Model to JSON for demo purpose
-    //   $scope.$watch('models', function(model) {
-    //       $scope.modelAsJson = angular.toJson(model, true);
-    //   }, true);
+    ctrl.docArr          = docService.documentArr;
+    ctrl.percentCorrect  = percent;
+    ctrl.docId           = docService.document.id;
+    ctrl.currentDocScore = docService.currentDocScore;
+
+    $scope.models = {
+      selected: null
+    }
+
+    //creates collumns for quiz board
+    function createCollumns(arr, size) {
+      var newArr = [];
+      for (var i=0; i<arr.length; i+=size) {
+        newArr.push(arr.slice(i, i+size));
+      };
+      newArr.splice(0,0,[]);
+      return newArr;
+    };
+
+    ctrl.columnQuizData = createCollumns(ctrl.docArr, ctrl.docArr.length/4);
+
+    ctrl.formArray = [];
+
   },
   controllerAs: 'quiz'
 

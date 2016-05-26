@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ui.router', 'templates', "d3"])
+  .module('app', ['ui.router', 'templates', "d3", 'dndLists'])
   .config(function($stateProvider, $urlRouterProvider){
     $stateProvider
       .state('home', {
@@ -22,36 +22,46 @@ angular
           }
         }
       })
-      .state('typing', {
-        url: '/documents/typing/:id',
-        templateUrl: 'jsApp/templates/typing.html',
-        controller: 'TypingCtrl as typing',
+      .state('document', {
+        url: '/documents/show/:id',
+        templateUrl: 'jsApp/templates/document.html',
+        controller: 'DocumentCtrl as document',
         resolve: {
           documentPromise: function(docService, $stateParams){
             return docService.getDoc($stateParams.id);
           }
         }
       })
-      .state('speaking', {
-        url: '/documents/speaking/:id',
-        templateUrl: 'jsApp/templates/speaking.html',
-        controller: 'SpeakingCtrl as speaking',
-        resolve: {
-          documentPromise: function(docService, $stateParams){
-            return docService.getDoc($stateParams.id);
-          }
-        }
-      })
-      .state('quiz', {
-        url: '/documents/quiz/:id',
-        templateUrl: 'jsApp/templates/quiz.html',
-        controller: 'QuizCtrl as quiz',
-        resolve: {
-          documentPromise: function(docService, $stateParams){
-            return docService.getDoc($stateParams.id);
-          }
-        }
-      })
+      // .state('typing', {
+      //   url: '/documents/typing/:id',
+      //   templateUrl: 'jsApp/templates/typing.html',
+      //   controller: 'TypingCtrl as typing',
+      //   resolve: {
+      //     documentPromise: function(docService, $stateParams){
+      //       return docService.getDoc($stateParams.id);
+      //     }
+      //   }
+      // })
+      // .state('speaking', {
+      //   url: '/documents/speaking/:id',
+      //   templateUrl: 'jsApp/templates/speaking.html',
+      //   controller: 'SpeakingCtrl as speaking',
+      //   resolve: {
+      //     documentPromise: function(docService, $stateParams){
+      //       return docService.getDoc($stateParams.id);
+      //     }
+      //   }
+      // })
+      // .state('quiz', {
+      //   url: '/documents/quiz/:id',
+      //   templateUrl: 'jsApp/templates/quiz.html',
+      //   controller: 'QuizCtrl as quiz',
+      //   resolve: {
+      //     documentPromise: function(docService, $stateParams){
+      //       return docService.getDoc($stateParams.id);
+      //     }
+      //   }
+      // })
       .state('d3', {
         url: '/d3',
         templateUrl: 'jsApp/templates/d3.html',

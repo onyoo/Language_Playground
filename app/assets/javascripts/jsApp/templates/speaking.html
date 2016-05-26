@@ -1,15 +1,22 @@
 <div class='document_wrapper' >
 
-  <!-- <div id="submitted_words">
-    <span ng-repeat='word in typing.inputArr track by $index'>
+  <div id="submitted_words">
+    <p><strong>What was heard:</strong></p>
+    <span ng-repeat='word in speaking.inputArr track by $index'>
       <span class='{{ word.e }}'>{{ word.n }}</span>
     </span>
-    <span ng-repeat='target in typing.docArr | scrollFilter:typing.count track by $index '>
+
+    <span ng-repeat='target in speaking.docArr | scrollFilter:speaking.count track by $index '>
       <span id="{{$index}}">{{target}}</span>
     </span>
-  </div> -->
-  <div id="submitted_words">
-    <span ng-repeat="word in speaking.info">{{word}}</span>
   </div>
+  <div id="submitted_words">
+    <span ng-repeat="word in speaking.docArr track by $index">{{word}} </span>
+  </div>
+
+  <time-directive></time-directive>
+  <p>Scores must be above 60% to be counted. Don't rush too much!</p>
+  <p>Best Time: {{typing.currentDocScore.best_time}}</p>
+  <p>Best Score: {{typing.currentDocScore.accuracy}}</p>
 
 </div>
