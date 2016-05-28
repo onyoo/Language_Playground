@@ -5,6 +5,8 @@
       <span ng-click='$parent.quiz = !$parent.quiz'>X Close X</span>
       <p>Drag the sentences below into order. Clicking will add to the end of the list.</p>
       <button ng-click="refresh()">Refresh (All progress will be lost!)</button>
+      <div ng-show="quiz.percentCorrect !== 0">Your Score: {{quiz.percentCorrect}}%</div>
+      <button ng-click="checkAnswer()">Submit</button>
       <ul dnd-list="column"
       ng-repeat="column in quiz.columnQuizData"
       ng-init="$index ? full = true : full = false"
@@ -16,6 +18,7 @@
           dnd-draggable="item"
           dnd-moved="column.splice($index, 1);"
           dnd-effect-allowed="move"
+          ng-click="moveToContainer(item,$index)"
           ng-class="{'receiver-item': !full }">
           {{item.string}}
         </li>

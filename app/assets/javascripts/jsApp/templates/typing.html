@@ -1,5 +1,5 @@
 <div class='document_wrapper' >
-  <!-- <a href='' ui-sref='document.quiz'> Quiz </a> -->
+
   <document-quiz data="typing.chunkedData" ng-show="showQuiz"></document-quiz>
 <br>
   <div id="submitted_words">
@@ -41,7 +41,6 @@
   <p>Best Time: {{typing.currentDocScore.best_time}}</p>
   <p>Best Score: {{typing.currentDocScore.accuracy}}</p>
 <br>
-<button ng-click='showQuiz = !showQuiz'>Quiz</button>
 <br>
   <div simple-line-chart
       id="lineGraph"
@@ -49,5 +48,6 @@
       data="typing.currentDocScore.scores"
       class="line-chart"></div>
   <div ng-show="showGraph && ((typing.currentDocScore.scores.length < 3) || !typing.currentDocScore.scores.length)">Nothing to show yet... Must have tried at least 3 times!</div>
+  <button ng-click="restart();">Restart</button>
   <button ng-click="showGraph=!showGraph;">My Stats</button>
 </div>

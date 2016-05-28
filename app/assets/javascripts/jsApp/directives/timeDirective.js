@@ -15,7 +15,7 @@ function timeDirective($interval, $rootScope) {
     },
     controllerAs: 'timeDir',
     link: function(scope, element, attrs, timeDir) { // ngModel used for $parsers / $formatters
-
+      var timePromise;
       // listens for 'sessionEnded' event from inputCtrl to stop stop time
       $rootScope.$on('sessionEnded', function () {
         this.status = "STOP";
@@ -30,10 +30,10 @@ function timeDirective($interval, $rootScope) {
       timeDir.startStop = function() {
         if(this.status === 'START'){
           timePromise = $interval(function(){timeDir.increment(); }, 1000);
-          this.status = 'STOP'
+          this.status = 'STOP';
         }else{
-          $interval.cancel(timePromise)
-          this.status = 'START'
+          $interval.cancel(timePromise);
+          this.status = 'START';
           $rootScope.$broadcast('timeAvailable', timeDir.time);
         };
       };

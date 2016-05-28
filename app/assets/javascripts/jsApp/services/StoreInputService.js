@@ -9,15 +9,15 @@ function StoreInputService() {
     };
   };
 
-  inputArray.addText = function(ctrl, text) {
-    var array = text.split(' ');
-    angular.forEach(array, function(val) {
-      var input = {}
-      input.body = val;
-      inputArray.formatAndAddWord(ctrl, input);
-      ctrl.count++
-    })
-  };
+  // inputArray.addText = function(ctrl, text) {
+  //   var array = text.split(' ');
+  //   angular.forEach(array, function(val) {
+  //     var input = {}
+  //     input.body = val;
+  //     inputArray.formatAndAddWord(ctrl, input);
+  //     ctrl.count++
+  //   })
+  // };
 
   inputArray.clearOut = function() {
     this.splice(0,this.length);
