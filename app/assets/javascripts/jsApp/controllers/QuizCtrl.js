@@ -1,11 +1,11 @@
 function QuizCtrl($scope, docService, storeInputService) {
   var ctrl             = this;
   ctrl.percentCorrect  = 0;
-  ctrl.document        = docService.document;
+  ctrl.documentAttrs   = $scope.$parent.document;
   ctrl.docArr          = [];
 
   // creates array of sentence objects
-  ctrl.document.body.split('. ').forEach(function(string, i){
+  ctrl.documentAttrs.document.body.split('. ').forEach(function(string, i){
     if (string.length > 0) {
       ctrl.docArr.push({id: i, string: string+='.'})
     };
@@ -58,7 +58,6 @@ function QuizCtrl($scope, docService, storeInputService) {
       if (ctrl.columnQuizData[0][i].id === item.id) {
         ctrl.percentCorrect += 1/total;
       };
-      debugger;
     });
     ctrl.percentCorrect *= 100;
   };

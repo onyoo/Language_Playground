@@ -19,7 +19,7 @@
 
     <ul class='document-list'>
       <li ng-repeat='document in ctrl.documents | filter:ctrl.search' class='document-index-card'>
-        <a ui-sref='document({id: document.id})' class='index_title'>{{document.title}}</a>
+        <a ui-sref='document.reading({id: document.id})' class='index_title'>{{document.title}}</a>
         -
         <span class='index_author'><strong>{{document.author}}</strong></span>
         -

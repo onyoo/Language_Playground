@@ -1,12 +1,12 @@
 <div class='document_wrapper' >
 
   <div id="submitted_words">
-    <p><strong>What was heard:</strong></p>
-    <span ng-repeat='word in speaking.inputArr track by $index'>
+    <p><strong>To start, just click the microphone below and start speaking naturally. The time will stop when you finish the text or you click stop.</strong></p>
+    <span ng-repeat='word in speaking.documentAttrs.inputArr track by $index'>
       <span class='{{ word.e }}'>{{ word.n }}</span>
     </span>
 
-    <span ng-repeat='target in speaking.docArr | scrollFilter:speaking.count track by $index '>
+    <span ng-repeat='target in speaking.documentAttrs.docArr | scrollFilter:speaking.count track by $index '>
       <span id="{{$index}}">{{target}}</span>
     </span>
   </div>
@@ -15,8 +15,8 @@
   </div>
 
   <time-directive></time-directive>
-  <p>Scores must be above 60% to be counted. Don't rush too much!</p>
-  <p>Best Time: {{typing.currentDocScore.best_time}}</p>
-  <p>Best Score: {{typing.currentDocScore.accuracy}}</p>
+  <p>NEED to Get SPEAKING Own ROW on TABKE</p>
+  <p>Best Time: {{typing.documentAttrs.currentDocScore.best_time}}</p>
+  <p>Best Score: {{typing.documentAttrs.currentDocScore.accuracy}}</p>
 
 </div>

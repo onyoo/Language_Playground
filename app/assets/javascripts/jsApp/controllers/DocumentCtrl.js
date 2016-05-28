@@ -1,14 +1,14 @@
 function DocumentCtrl(storeInputService, docService, $interval, $scope, $rootScope, $stateParams) {
-  var input     = this;
+  var ctrl     = this;
   var percent   = 0;
-  this.body     = '';
-  this.count    = 0;
-  this.inputArr = storeInputService;
-  this.docArr   = docService.documentArr;
-  this.percentCorrect = percent;
-  this.docId    = docService.document.id;
-  this.currentDocScore = docService.currentDocScore;
-  var ctrl = this;
+  ctrl.body     = '';
+  ctrl.count    = 0;
+  ctrl.inputArr = storeInputService;
+  ctrl.docArr   = docService.documentArr;
+  ctrl.document = docService.document;
+  ctrl.percentCorrect = percent;
+  ctrl.docId    = docService.document.id;
+  ctrl.currentDocScore = docService.currentDocScore;
 
 };
 

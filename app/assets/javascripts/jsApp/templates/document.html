@@ -1,13 +1,16 @@
 <div class='document_wrapper' >
   <br>
-  <div id="submitted_words">
-    <span ng-repeat="word in document.docArr track by $index">{{word}} </span>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="document-nav-wrapper">
+    <a ui-sref="document.reading" ui-sref-active="active-doc-link" class="not-active-doc-link">Read</a>
+    <a ui-sref="document.typing" ui-sref-active="active-doc-link" class="not-active-doc-link">Type</a>
+    <a ui-sref="document.speaking" ui-sref-active="active-doc-link" class="not-active-doc-link">Speak</a>
+    <a ui-sref="document.quiz" ui-sref-active="active-doc-link" class="not-active-doc-link">Quiz</a>
   </div>
 
-  <a ui-sref="document.typing">Typing</a>
-  <a ui-sref="document.speaking">Speaking</a>
-  <a ui-sref="document.quiz">Quiz</a>
-
   <ui-view></ui-view>
-
+<br><br>
 </div>

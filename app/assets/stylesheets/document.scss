@@ -46,3 +46,22 @@
   background-color: lightred !important;
   margin-left: 1em;
 }
+
+.document-nav-wrapper {
+  border: 1px solid black;
+  margin-left: 10em;
+  margin-right: 10em;
+  border-radius: 15px;
+}
+
+.not-active-doc-link {
+  text-decoration: none;
+  border-radius: 3px;
+  padding: .5em;
+  color: black;
+}
+
+.active-doc-link {
+  @extend .not-active-doc-link;
+  background-color: lightblue;
+}

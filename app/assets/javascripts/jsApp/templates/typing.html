@@ -3,10 +3,10 @@
   <document-quiz data="typing.chunkedData" ng-show="showQuiz"></document-quiz>
 <br>
   <div id="submitted_words">
-    <span ng-repeat='word in typing.inputArr track by $index'>
+    <span ng-repeat='word in typing.documentAttrs.inputArr track by $index'>
       <span class='{{ word.e }}'>{{ word.n }}</span>
     </span>
-    <span ng-repeat='target in typing.docArr | scrollFilter:typing.count track by $index '>
+    <span ng-repeat='target in typing.documentAttrs.docArr | scrollFilter:typing.count track by $index '>
       <span id="{{$index}}">{{target}}</span>
     </span>
   </div>
@@ -44,10 +44,10 @@
 <br>
   <div simple-line-chart
       id="lineGraph"
-      ng-show="showGraph && typing.currentDocScore.scores.length > 2"
-      data="typing.currentDocScore.scores"
+      ng-show="showGraph && typing.documentAttrs.currentDocScore.scores.length > 2"
+      data="typing.documentAttrs.currentDocScore.scores"
       class="line-chart"></div>
-  <div ng-show="showGraph && ((typing.currentDocScore.scores.length < 3) || !typing.currentDocScore.scores.length)">Nothing to show yet... Must have tried at least 3 times!</div>
+  <div ng-show="showGraph && ((typing.documentAttrs.currentDocScore.scores.length < 3) || !typing.documentAttrs.currentDocScore.scores.length)">Nothing to show yet... Must have tried at least 3 times!</div>
   <button ng-click="restart();">Restart</button>
   <button ng-click="showGraph=!showGraph;">My Stats</button>
 </div>

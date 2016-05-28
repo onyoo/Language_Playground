@@ -13,7 +13,7 @@ angular
         }
       })
       .state('new_doc', {
-        url: '/documents/new',
+        url: '/new',
         templateUrl: 'jsApp/templates/newDoc.html',
         controller: 'MainCtrl',
         resolve: {
@@ -23,49 +23,35 @@ angular
         }
       })
       .state('document', {
-        url: '/documents/show/:id',
+        url: '/documents/:id',
         templateUrl: 'jsApp/templates/document.html',
         controller: 'DocumentCtrl as document',
         resolve: {
           documentPromise: function(docService, $stateParams){
             return docService.getDoc($stateParams.id);
           }
-        }
+        },
+        abstract: true
+      })
+      .state('document.reading', {
+        url: '/reading',
+        templateUrl: 'jsApp/templates/reading.html',
+        controller: 'DocumentCtrl as reading'
       })
       .state('document.typing', {
-        url: '/documents/typing/:id',
+        url: '/typing',
         templateUrl: 'jsApp/templates/typing.html',
-        controller: 'TypingCtrl as typing',
-        resolve: {
-          documentPromise: function(docService, $stateParams){
-            return docService.getDoc($stateParams.id);
-          }
-        }
+        controller: 'TypingCtrl as typing'
       })
       .state('document.speaking', {
-        url: '/documents/speaking/:id',
+        url: '/speaking',
         templateUrl: 'jsApp/templates/speaking.html',
-        controller: 'SpeakingCtrl as speaking',
-        resolve: {
-          documentPromise: function(docService, $stateParams){
-            return docService.getDoc($stateParams.id);
-          }
-        }
+        controller: 'SpeakingCtrl as speaking'
       })
       .state('document.quiz', {
-        url: '/documents/quiz/:id',
+        url: '/quiz',
         templateUrl: 'jsApp/templates/quiz.html',
-        controller: 'QuizCtrl as quiz',
-        resolve: {
-          documentPromise: function(docService, $stateParams){
-            return docService.getDoc($stateParams.id);
-          }
-        }
+        controller: 'QuizCtrl as quiz'
       })
-      // .state('d3', {
-      //   url: '/d3',
-      //   templateUrl: 'jsApp/templates/d3.html',
-      //   controller: 'D3Controller as d3'
-      // })
       $urlRouterProvider.otherwise('home');
   });
