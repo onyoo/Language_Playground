@@ -1,7 +1,7 @@
 class UserDoc < ActiveRecord::Base
   belongs_to :user
   belongs_to :document
-  has_many :scores
+  has_many :scores, dependent: :destroy
 
   validates :user_id, uniqueness: {scope: :document_id}
 

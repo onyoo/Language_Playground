@@ -18,7 +18,9 @@
       <div id="login-info">
         <a href='' ui-sref='home'> Home </a> <br>
         <% if current_user %>
-          Logged-in as : <%= current_user.name %> - <%= link_to 'Log-out', log_out_path %>
+          Logged-in as : <%= current_user.name %>
+          <%= image_tag current_user.profile_pic_url, size: "20x20", alt: current_user.name + "'s profile picture'" %>
+           - <%= link_to 'Log-out', log_out_path %>
         <% else %>
           <div >
             Sign-in with:

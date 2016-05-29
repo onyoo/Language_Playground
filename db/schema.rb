@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521184834) do
+ActiveRecord::Schema.define(version: 20160529065546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160521184834) do
   end
 
   create_table "scores", force: :cascade do |t|
-    t.string   "time"
+    t.string   "best_time"
     t.float    "accuracy"
     t.integer  "user_doc_id"
     t.datetime "created_at",  null: false
@@ -57,8 +57,13 @@ ActiveRecord::Schema.define(version: 20160521184834) do
     t.string   "image_url"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "profile_pic_file_name"
+    t.string   "profile_pic_content_type"
+    t.integer  "profile_pic_file_size"
+    t.datetime "profile_pic_updated_at"
+    t.string   "profile_pic_url"
   end
 
   add_foreign_key "scores", "user_docs"
