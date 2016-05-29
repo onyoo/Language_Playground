@@ -1,6 +1,7 @@
 function TypingCtrl(storeInputService, docService, $interval, $scope, $rootScope, $stateParams) {
   var ctrl             = this;
   var percent          = 0;
+  var scoreType        = 'typing';
   ctrl.body            = '';
   ctrl.count           = 0;
   ctrl.documentAttrs   = $scope.$parent.document;
@@ -23,23 +24,20 @@ function TypingCtrl(storeInputService, docService, $interval, $scope, $rootScope
   };
 
   ctrl.endSession = function() {
-    // broadcasts end of session to timeDirective over $rootScope
-    $rootScope.$broadcast('sessionEnded');
+    // docService.addDoc(id).then(function(resp){});
+    $rootScope.$broadcast('sessionEnded');   // broadcasts end of session to timeDirective over $rootScope
     var correct = 0;
-    angular.forEach(this.inputArr, function(word){
+    angular.forEach(ctrl.documentAttrs.inputArr, function(word){
         correct += (word.e === 'match') ? 1 : 0;
     });
-    this.percentCorrect = Math.floor(correct/this.inputArr.length * 100, -1);
-    docService.updateScore(ctrl.documentAttrs.docId, ctrl.documentAttrs.percentCorrect, ctrl.time);
+    ctrl.documentAttrs.percentCorrect = Math.floor(correct/ctrl.documentAttrs.inputArr.length * 100, -1);
+    docService.updateScore(ctrl.documentAttrs.docId, ctrl.documentAttrs.percentCorrect, ctrl.time, scoreType);
   };
 
   $scope.restart = function() {
+    $rootScope.$broadcast('restartSession');
     ctrl.body     = '';
     ctrl.count    = 0;
-    ctrl.documentAttrs.inputArr = [];
-    ctrl.documentAttrs.docArr   = docService.documentArr;
-    ctrl.percentCorrect = percent;
-    ctrl.documentAttrs.currentDocScore = docService.currentDocScore;
   };
 
 };

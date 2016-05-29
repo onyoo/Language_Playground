@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     def set_profile_picture_url(user)
       case user.provider
       when 'facebook'
-        x = open('http://graph.facebook.com/v2.6/#{user.uid}/picture?redirect=false', &:read)
+        x = open("http://graph.facebook.com/v2.6/#{user.uid}/picture?redirect=false", &:read)
         user.profile_pic = eval(x)[:data][:url]
       else # 'twitter', 'google', 'linkedin'
         user.profile_pic = open(user.image_url)

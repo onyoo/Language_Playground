@@ -5,10 +5,10 @@ class Document < ActiveRecord::Base
 
   def update_score(user, score_params)
     if !user_doc = user.user_docs.detect{|user_d| user_d.document_id == self.id}
-      user.documents << self
-      user_doc = user.user_docs.detect{|user_d| user_d.document_id == self.id}
+      user.user_docs.build(score_params.permit(:best_time, :accuracy).merge(document_id: self.id))
+    else
+      user_doc.update_best_scores(score_params)
     end
-    user_doc.update_best_scores(score_params)
     user_doc
   end
 

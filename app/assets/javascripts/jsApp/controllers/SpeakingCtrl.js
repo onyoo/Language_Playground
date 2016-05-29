@@ -1,6 +1,7 @@
 function SpeakingCtrl(docService, storeInputService, $interval, $scope, $rootScope, $stateParams) {
-  var ctrl = this;
+  var ctrl      = this;
   var percent   = 0;
+  var scoreType = 'speaking';
   ctrl.body     = '';
   ctrl.count    = 0;
   ctrl.documentAttrs = $scope.$parent.document;
@@ -29,7 +30,7 @@ function SpeakingCtrl(docService, storeInputService, $interval, $scope, $rootSco
         correct += (word.e === 'match') ? 1 : 0;
     });
     ctrl.percentCorrect = Math.floor(correct/ctrl.documentAttrs.inputArr.length * 100, -1);
-    docService.updateScore(ctrl.documentAttrs.docId, ctrl.percentCorrect, ctrl.time);
+    docService.updateScore(ctrl.documentAttrs.docId, ctrl.percentCorrect, ctrl.time, scoreType);
   };
 
   ctrl.addText = function(text) {

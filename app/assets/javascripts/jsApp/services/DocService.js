@@ -46,7 +46,7 @@ function DocService($http, $stateParams, $state) {
 
     return $http.post('/documents.json', data).success(function(resp) {
       angular.copy(resp.document, doc.document);
-      $state.go('document', {id: doc.document.id});
+      $state.go('document.typing', {id: doc.document.id});
     });
   };
 
@@ -80,11 +80,12 @@ function DocService($http, $stateParams, $state) {
     });
   };
 
-  doc.updateScore = function(id, percent, time) {
+  doc.updateScore = function(id, percent, time, type) {
     var data = {
       'user_doc': {
         'accuracy': percent,
-        'best_time': time.toHHMMSS()
+        'best_time': time.toHHMMSS(),
+        'score_type': type
       }
     };
 

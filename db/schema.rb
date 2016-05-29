@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160529065546) do
   end
 
   create_table "scores", force: :cascade do |t|
+    t.string   "score_type"
     t.string   "best_time"
     t.float    "accuracy"
     t.integer  "user_doc_id"

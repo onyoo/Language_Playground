@@ -10,6 +10,10 @@ function DocumentCtrl(storeInputService, docService, $interval, $scope, $rootSco
   ctrl.docId    = docService.document.id;
   ctrl.currentDocScore = docService.currentDocScore;
 
+  $rootScope.$on('restartSession', function () {
+    storeInputService.clearOut();
+  });
+
 };
 
 angular

@@ -27,6 +27,6 @@ private
   end
 
   def score_params
-    params.require(:user_doc).permit(:accuracy, :best_time)
+    params.require(:user_doc).permit(:accuracy, :best_time, :score_type)
   end
 end

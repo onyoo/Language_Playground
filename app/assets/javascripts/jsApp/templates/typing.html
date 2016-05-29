@@ -37,6 +37,7 @@
   <p ng-show="typing.percentCorrect">Congrats! You got: {{ typing.percentCorrect }}% right!</p>
 
   <time-directive></time-directive>
+  <button ng-click="restart();">Restart</button>
   <p>Scores must be above 60% to be counted. Don't rush too much!</p>
   <p>Best Time: {{typing.currentDocScore.best_time}}</p>
   <p>Best Score: {{typing.currentDocScore.accuracy}}</p>
@@ -48,6 +49,5 @@
       data="typing.documentAttrs.currentDocScore.scores"
       class="line-chart"></div>
   <div ng-show="showGraph && ((typing.documentAttrs.currentDocScore.scores.length < 3) || !typing.documentAttrs.currentDocScore.scores.length)">Nothing to show yet... Must have tried at least 3 times!</div>
-  <button ng-click="restart();">Restart</button>
   <button ng-click="showGraph=!showGraph;">My Stats</button>
 </div>

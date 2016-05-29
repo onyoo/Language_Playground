@@ -8,9 +8,9 @@ class UserDoc < ActiveRecord::Base
   def update_best_scores(score_params)
     if score_params[:accuracy] >= 60
       if (self.accuracy < score_params[:accuracy] rescue true) && (self.best_time < score_params[:best_time] rescue true)
-        self.update(score_params)
+        self.update(score_params.permit(:best_time, :accuracy))
       else
-        score_params.each do |key, val|
+        score_params.permit(:best_time, :accuracy).each do |key, val|
           # uses case because lower time is better, but higher score is better
           # will allow for adding more cases if more metrics are added
           case key
