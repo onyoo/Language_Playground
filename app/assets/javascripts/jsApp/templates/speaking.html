@@ -13,9 +13,8 @@
   <div id="submitted_words">
     <span ng-repeat="word in speaking.docArr track by $index">{{word}} </span>
   </div>
-
   <time-directive></time-directive>
-  <p>NEED to Get SPEAKING Own ROW on TABKE</p>
+  <button ng-click="restart()">Restart</button>
   <p>Best Time: {{typing.documentAttrs.currentDocScore.best_time}}</p>
   <p>Best Score: {{typing.documentAttrs.currentDocScore.accuracy}}</p>
 

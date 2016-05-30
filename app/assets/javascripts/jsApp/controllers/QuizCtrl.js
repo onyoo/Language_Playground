@@ -1,13 +1,16 @@
 function QuizCtrl($scope, docService, storeInputService) {
   var ctrl             = this;
-  ctrl.percentCorrect  = 0;
+  ctrl.percentCorrect  = undefined;
   ctrl.documentAttrs   = $scope.$parent.document;
   ctrl.docArr          = [];
+  ctrl.shuffledArray   = [];
 
   // creates array of sentence objects
   ctrl.documentAttrs.document.body.split('. ').forEach(function(string, i){
     if (string.length > 0) {
-      ctrl.docArr.push({id: i, string: string+='.'})
+      //check for other punctuation before adding '.'
+      ctrl.docArr.push({id: i, string: string+='.'});
+      ctrl.shuffledArray.push({id: i, string: string+='.'});
     };
   });
 
@@ -22,7 +25,7 @@ function QuizCtrl($scope, docService, storeInputService) {
     return newArr;
   };
 
-  ctrl.columnQuizData = createCollumns(shuffle(ctrl.docArr), ctrl.docArr.length/4);
+  ctrl.columnQuizData = createCollumns(shuffle(ctrl.shuffledArray), ctrl.shuffledArray.length/4);
 
   function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -49,11 +52,13 @@ function QuizCtrl($scope, docService, storeInputService) {
 
   // refreshes quiz
   $scope.refresh = function() {
-    ctrl.columnQuizData = createCollumns(ctrl.docArr, ctrl.docArr.length/4);
+    ctrl.percentCorrect = undefined;
+    ctrl.columnQuizData = createCollumns(shuffle(ctrl.shuffledArray), ctrl.shuffledArray.length/4);
   };
 
   $scope.checkAnswer = function() {
     var total = ctrl.docArr.length;
+    ctrl.percentCorrect = 0;
     ctrl.docArr.forEach(function(item, i) {
       if (ctrl.columnQuizData[0][i].id === item.id) {
         ctrl.percentCorrect += 1/total;
@@ -61,6 +66,7 @@ function QuizCtrl($scope, docService, storeInputService) {
     });
     ctrl.percentCorrect *= 100;
   };
+
 };
 
 angular

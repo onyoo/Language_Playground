@@ -2,7 +2,7 @@
     <div class='simpleDemo quiz-box' ng-click="$event.stopPropagation()">
       <p>Drag the sentences below into order. Clicking will add to the end of the list.</p>
       <button ng-click="refresh()">Refresh (All progress will be lost!)</button>
-      <div ng-show="quiz.percentCorrect !== 0">Your Score: {{quiz.percentCorrect}}%</div>
+      <div ng-show="quiz.percentCorrect !== undefined">Your Score: {{quiz.percentCorrect}}%</div>
       <button ng-click="checkAnswer()">Submit</button>
       <ul dnd-list="column"
       ng-repeat="column in quiz.columnQuizData"

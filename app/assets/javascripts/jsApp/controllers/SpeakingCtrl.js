@@ -6,6 +6,7 @@ function SpeakingCtrl(docService, storeInputService, $interval, $scope, $rootSco
   ctrl.count    = 0;
   ctrl.documentAttrs = $scope.$parent.document;
 
+  storeInputService.clearOut();
   $scope.id = $stateParams.id;
 
   $scope.$on('timeAvailable', function(e, time) {
@@ -38,6 +39,12 @@ function SpeakingCtrl(docService, storeInputService, $interval, $scope, $rootSco
     storeInputService.addText(ctrl, text);
     $scope.$apply()
     ctrl.documentAttrs.inputArr.length >= ctrl.documentAttrs.docArr.length ? ctrl.endSession() : null;
+  };
+
+  $scope.restart = function() {
+    $rootScope.$broadcast('restartSession');
+    ctrl.body     = '';
+    ctrl.count    = 0;
   };
 
   var commands = {
