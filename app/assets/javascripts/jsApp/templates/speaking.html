@@ -2,6 +2,7 @@
 
   <div id="submitted_words">
     <p><strong>To start, just click the microphone below and start speaking naturally. The time will stop when you finish the text or you click stop.</strong></p>
+    <p><strong>Our speech recognition service ocurrently supports roman alphabet based languages.</strong></p>
     <span ng-repeat='word in speaking.documentAttrs.inputArr track by $index'>
       <span class='{{ word.e }}'>{{ word.n }}</span>
     </span>

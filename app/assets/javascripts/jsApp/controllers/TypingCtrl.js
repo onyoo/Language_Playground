@@ -5,6 +5,8 @@ function TypingCtrl(storeInputService, docService, $interval, $scope, $rootScope
   ctrl.body            = '';
   ctrl.count           = 0;
   ctrl.documentAttrs   = $scope.$parent.document;
+  // need to asynch score filter and graph update
+  ctrl.scores          = ctrl.documentAttrs.currentDocScore.scores
 
   storeInputService.clearOut();
   $scope.id = $stateParams.id;
@@ -38,6 +40,11 @@ function TypingCtrl(storeInputService, docService, $interval, $scope, $rootScope
     $rootScope.$broadcast('restartSession');
     ctrl.body     = '';
     ctrl.count    = 0;
+  };
+
+  // hides speech input
+  if (document.getElementById("skitt-ui")) {
+    document.getElementById('skitt-ui').className += ' hidden';
   };
 
 };

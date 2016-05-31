@@ -53,7 +53,7 @@ function SpeakingCtrl(docService, storeInputService, $interval, $scope, $rootSco
       $scope.$apply();
       ctrl.addText(val);
     }
-  }
+  };
 
   if (annyang) {
     // Add our commands to annyang
@@ -64,7 +64,11 @@ function SpeakingCtrl(docService, storeInputService, $interval, $scope, $rootSco
     SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/themes/flat.css');
     // Render KITT's interface
     SpeechKITT.vroom();
-  }
+  };
+
+  if (document.getElementById('skitt-ui')) {
+    document.getElementById('skitt-ui').className = "skitt-ui--not-listening";
+  };
 };
 
 angular

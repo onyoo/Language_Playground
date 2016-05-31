@@ -66,7 +66,10 @@ function QuizCtrl($scope, docService, storeInputService) {
     });
     ctrl.percentCorrect *= 100;
   };
-
+  // hides speech input
+  if (document.getElementById("skitt-ui")) {
+    document.getElementById('skitt-ui').className += ' hidden'
+  };
 };
 
 angular

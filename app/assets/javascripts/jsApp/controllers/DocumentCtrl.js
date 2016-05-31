@@ -14,6 +14,11 @@ function DocumentCtrl(storeInputService, docService, $interval, $scope, $rootSco
     storeInputService.clearOut();
   });
 
+  // hides speech input
+  if (document.getElementById("skitt-ui")) {
+    document.getElementById('skitt-ui').className += ' hidden';
+  };
+
 };
 
 angular

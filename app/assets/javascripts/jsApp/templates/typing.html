@@ -21,7 +21,7 @@
       ng-model='typing.body'
       ng-keypress="$event.charCode === 32 ? typing.appendWord(typing) : null"
       ng-model-options="{'updateOn': 'default keypress'}">
-      <p>Doc length: {{typing.docArr.length}}</p>
+      <p>Doc length: {{typing.documentAttrs.docArr.length}}</p>
   </div>
 
     <div class="help"  ng-class="{'hide' : !showHelp}">
@@ -39,15 +39,15 @@
   <time-directive></time-directive>
   <button ng-click="restart();">Restart</button>
   <!-- <p>Scores must be above 60% to be counted. Don't rush too much!</p> -->
-  <p>Best Time: {{typing.currentDocScore.best_time}}</p>
-  <p>Best Score: {{typing.currentDocScore.accuracy}}</p>
-<br>
-<br>
+  <br>
+  <button ng-click="showGraph=!showGraph;">My Stats</button>
+  <p>Best Time: {{typing.documentAttrs.currentDocScore.best_time}}</p>
+  <p>Best Score: {{typing.documentAttrs.currentDocScore.accuracy}}</p>
+
   <div simple-line-chart
       id="lineGraph"
       ng-show="showGraph && typing.documentAttrs.currentDocScore.scores.length > 2"
       data="typing.documentAttrs.currentDocScore.scores"
       class="line-chart"></div>
   <div ng-show="showGraph && ((typing.documentAttrs.currentDocScore.scores.length < 3) || !typing.documentAttrs.currentDocScore.scores.length)">Nothing to show yet... Must have tried at least 3 times!</div>
-  <button ng-click="showGraph=!showGraph;">My Stats</button>
 </div>

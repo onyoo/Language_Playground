@@ -23,7 +23,6 @@ class UserDoc < ActiveRecord::Base
         self.changed? ? self.save : nil
       end
     end
-
   end
 
   def set_lower_score(key, val)
