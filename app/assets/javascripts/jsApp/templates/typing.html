@@ -40,14 +40,15 @@
   <button ng-click="restart();">Restart</button>
   <!-- <p>Scores must be above 60% to be counted. Don't rush too much!</p> -->
   <br>
-  <button ng-click="showGraph=!showGraph;">My Stats</button>
-  <p>Best Time: {{typing.documentAttrs.currentDocScore.best_time}}</p>
-  <p>Best Score: {{typing.documentAttrs.currentDocScore.accuracy}}</p>
+  <button ng-click="showGraph=true;" ng-show="!showGraph">View My Stats</button>
+  <button ng-click="showGraph=false;" ng-show="showGraph">Hide My Stats</button>
+  <p>Best Time: {{typing.documentAttrs.userDoc.best_time}}</p>
+  <p>Best Score: {{typing.documentAttrs.userDoc.accuracy}}</p>
 
   <div simple-line-chart
       id="lineGraph"
-      ng-show="showGraph && typing.documentAttrs.currentDocScore.scores.length > 2"
-      data="typing.documentAttrs.currentDocScore.scores"
+      ng-show="showGraph && typing.documentAttrs.userDoc.scores.length > 2"
+      data="typing.documentAttrs.userDoc.scores"
       class="line-chart"></div>
-  <div ng-show="showGraph && ((typing.documentAttrs.currentDocScore.scores.length < 3) || !typing.documentAttrs.currentDocScore.scores.length)">Nothing to show yet... Must have tried at least 3 times!</div>
+  <div ng-show="showGraph && ((typing.documentAttrs.userDoc.scores.length < 3) || !typing.documentAttrs.userDoc.scores.length)">Nothing to show yet... Must have tried at least 3 times!</div>
 </div>

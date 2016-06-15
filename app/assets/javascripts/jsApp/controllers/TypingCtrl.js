@@ -6,7 +6,7 @@ function TypingCtrl(storeInputService, docService, $interval, $scope, $rootScope
   ctrl.count           = 0;
   ctrl.documentAttrs   = $scope.$parent.document;
   // need to asynch score filter and graph update
-  ctrl.scores          = ctrl.documentAttrs.currentDocScore.scores
+  ctrl.scores          = ctrl.documentAttrs.userDoc.scores
 
   storeInputService.clearOut();
   $scope.id = $stateParams.id;

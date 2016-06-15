@@ -3,7 +3,7 @@ function DocService($http, $stateParams, $state) {
     documents: [],
     document: {},
     documentArr: [],
-    currentDocScore: {},
+    userDoc: {},
     userDocs: []
   };
 
@@ -27,7 +27,7 @@ function DocService($http, $stateParams, $state) {
       }
 
       angular.copy(data, doc.document);
-      angular.copy(resp.documents[1], doc.currentDocScore);
+      angular.copy(resp.documents[1], doc.userDoc);
       angular.copy(newArray, doc.documentArr);
     });
   };
@@ -90,7 +90,8 @@ function DocService($http, $stateParams, $state) {
     };
 
     return $http.patch('/user_docs/' + id, data).then(function(resp) {
-      angular.copy(resp.data.user_doc, doc.currentDocScore);
+      doc.userDoc.scores.push(resp.data)
+      // angular.copy(resp.data.user_doc, doc.userDoc);
     }, function(error) {
       console.log(error);
     });

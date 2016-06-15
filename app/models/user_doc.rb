@@ -37,4 +37,12 @@ class UserDoc < ActiveRecord::Base
     end
   end
 
+  def create_score(score_params)
+    if score_params[:accuracy] >= 60
+      score = scores.build(score_params)
+      score.save
+      score
+    end
+  end
+
 end

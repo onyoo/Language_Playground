@@ -8,7 +8,7 @@ function DocumentCtrl(storeInputService, docService, $interval, $scope, $rootSco
   ctrl.document = docService.document;
   ctrl.percentCorrect = percent;
   ctrl.docId    = docService.document.id;
-  ctrl.currentDocScore = docService.currentDocScore;
+  ctrl.userDoc  = docService.userDoc;
 
   $rootScope.$on('restartSession', function () {
     storeInputService.clearOut();
